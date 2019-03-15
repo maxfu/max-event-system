@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: MaxFu User System\n"
+"Language: en-au\n"
+
+#: 
+msgid "You are already signed in."
+msgstr ""
+
+#: 
+msgid "Registering new users is currently not allowed."
+msgstr ""
+
+#: 
+msgid "You are not signed in yet."
+msgstr ""
+
+#: 
+msgid "Hello!"
+msgstr ""
+
+#: 
+msgid "You asked us to reset your password for your account using the email address %s."
+msgstr ""
+
+#: 
+msgid "If this was a mistake, or you didn't ask for a password reset, just ignore this email and nothing will happen."
+msgstr ""
+
+#: 
+msgid "To reset your password, visit the following address:"
+msgstr ""
+
+#: 
+msgid "Thanks!"
+msgstr ""
+
+#: 
+msgid "You do have an email address, right?"
+msgstr ""
+
+#: 
+msgid "You need to enter a password to login."
+msgstr ""
+
+#: 
+msgid "We don't have any users with that email address. Maybe you used a different one when signing up?"
+msgstr ""
+
+#: 
+msgid "The password you entered wasn't quite right. <a href='%s'>Did you forget your password</a>?"
+msgstr ""
+
+#: 
+msgid "The email address you entered is not valid."
+msgstr ""
+
+#: 
+msgid "An account exists with this email address."
+msgstr ""
+
+#: 
+msgid "You need to enter your email address to continue."
+msgstr ""
+
+#: 
+msgid "There are no users registered with this email address."
+msgstr ""
+
+#: 
+msgid "The password reset link you used is not valid anymore."
+msgstr ""
+
+#: 
+msgid "The two passwords you entered don't match."
+msgstr ""
+
+#: 
+msgid "Sorry, we don't accept empty passwords."
+msgstr ""
+
+#: 
+msgid "An unknown error occurred. Please try again later."
+msgstr ""
+
+#: 
+msgid "CCCA Member Profile"
+msgstr "CCCA Member Profile"
+
