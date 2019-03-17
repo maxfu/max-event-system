@@ -11,12 +11,12 @@ class Upcoming_Events extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'class'			=>	'mes_upcoming_events',
-			'description'	=>	__( 'A widget to display a list of upcoming events', 'maxfu-event-system' )
+			'description'	=>	__( 'A widget to display a list of upcoming events', 'max-event-sys' )
 		);
 
 		parent::__construct(
 			'mes_upcoming_events',			//base id
-			__( 'Upcoming Events', 'maxfu-event-system' ),	//title
+			__( 'Upcoming Events', 'max-event-sys' ),	//title
 			$widget_ops
 		);
 	}
@@ -37,11 +37,11 @@ class Upcoming_Events extends WP_Widget {
 
 		<!-- Rendering the widget form in the admin -->
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'maxfu-event-system' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'max-event-sys' ); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="widefat" value="<?php echo esc_attr( $instance['title'] ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'number_events' ); ?>"><?php _e( 'Number of events to show', 'maxfu-event-system' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'number_events' ); ?>"><?php _e( 'Number of events to show', 'max-event-sys' ); ?></label>
 			<select id="<?php echo $this->get_field_id( 'number_events' ); ?>" name="<?php echo $this->get_field_name( 'number_events' ); ?>" class="widefat">
 				<?php for ( $i = 1; $i <= 10; $i++ ): ?>
 					<option value="<?php echo $i; ?>" <?php selected( $i, $instance['number_events'], true ); ?>><?php echo $i; ?></option>

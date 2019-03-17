@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: MaxFu Event System
+ * Plugin Name: Max Event System
  * Plugin URI:
  * Description: A plugin to show a list of upcoming events on the front-end. Based on Bilal Shahid's article.
  * Version: 1.0
  * Author: Max Fu
  * Author URI:
  * License: GPL2
- * Text Domain:       maxfu-event-system
+ * Text Domain:       max-event-sys
  * Domain Path:       /languages
  */
 
@@ -25,7 +25,7 @@ define( 'SCRIPTS', ROOT . '/js/' );
  * @since 1.0.0
  */
 function mes_load_textdomain() {
-  load_plugin_textdomain( 'maxfu-event-system', false, basename( dirname( __FILE__ ) ) . '/languages' );
+  load_plugin_textdomain( 'max-event-sys', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 
 add_action( 'init', 'mes_load_textdomain' );
@@ -35,16 +35,16 @@ add_action( 'init', 'mes_load_textdomain' );
  */
 function mes_custom_post_type() {
 	$labels = array(
-		'name'								=>	__( 'Events', 'maxfu-event-system' ),
-		'singular_name'				=>	__( 'Event', 'maxfu-event-system' ),
-		'add_new'							=>	__( 'Add New', 'maxfu-event-system' ),
-		'add_new_item'				=>	__( 'Add New Event', 'maxfu-event-system' ),
-		'all_items'						=>	__( 'All Events', 'maxfu-event-system' ),
-		'edit_item'						=>	__( 'Edit Event', 'maxfu-event-system' ),
-		'new_item'						=>	__( 'New Event', 'maxfu-event-system' ),
-		'view_item'						=>	__( 'View Event', 'maxfu-event-system' ),
-		'not_found'						=>	__( 'No Events Found', 'maxfu-event-system' ),
-		'not_found_in_trash'	=>	__( 'No Events Found in Trash', 'maxfu-event-system' )
+		'name'								=>	__( 'Events', 'max-event-sys' ),
+		'singular_name'				=>	__( 'Event', 'max-event-sys' ),
+		'add_new'							=>	__( 'Add New', 'max-event-sys' ),
+		'add_new_item'				=>	__( 'Add New Event', 'max-event-sys' ),
+		'all_items'						=>	__( 'All Events', 'max-event-sys' ),
+		'edit_item'						=>	__( 'Edit Event', 'max-event-sys' ),
+		'new_item'						=>	__( 'New Event', 'max-event-sys' ),
+		'view_item'						=>	__( 'View Event', 'max-event-sys' ),
+		'not_found'						=>	__( 'No Events Found', 'max-event-sys' ),
+		'not_found_in_trash'	=>	__( 'No Events Found in Trash', 'max-event-sys' )
 	);
 
 	$supports = array(
@@ -55,9 +55,9 @@ function mes_custom_post_type() {
 	);
 
 	$args = array(
-		'label'			=>	__( 'Events', 'maxfu-event-system' ),
+		'label'			=>	__( 'Events', 'max-event-sys' ),
 		'labels'		=>	$labels,
-		'description'	=>	__( 'A list of upcoming events', 'maxfu-event-system' ),
+		'description'	=>	__( 'A list of upcoming events', 'max-event-sys' ),
 		'public'		=>	true,
 		'show_in_menu'	=>	true,
 		'menu_icon'		=>	IMAGES . 'event.svg',
@@ -87,7 +87,7 @@ register_activation_hook( __FILE__, 'mes_activation_deactivation' );
 function mes_add_event_info_metabox() {
 	add_meta_box(
 		'mes-event-info-metabox',
-		__( 'Event Info', 'maxfu-event-system' ),
+		__( 'Event Info', 'max-event-sys' ),
 		'mes_render_event_info_metabox',
 		'event',
 		'side',
@@ -119,19 +119,19 @@ function mes_render_event_info_metabox( $post ) {
 
 	?>
 	<p>
-		<label for="mes-event-start-date"><?php _e( 'Event Start Date:', 'maxfu-event-system' ); ?></label>
+		<label for="mes-event-start-date"><?php _e( 'Event Start Date:', 'max-event-sys' ); ?></label>
 		<input type="text" id="mes-event-start-date" name="mes-event-start-date" class="widefat mes-event-date-input" value="<?php echo date( 'M d, Y H:i', $event_start_date ); ?>" placeholder="Format: February 18, 2014">
 	</p>
 	<p>
-		<label for="mes-event-end-date"><?php _e( 'Event End Date:', 'maxfu-event-system' ); ?></label>
+		<label for="mes-event-end-date"><?php _e( 'Event End Date:', 'max-event-sys' ); ?></label>
 		<input type="text" id="mes-event-end-date" name="mes-event-end-date" class="widefat mes-event-date-input" value="<?php echo date( 'M d, Y H:i', $event_end_date ); ?>" placeholder="Format: February 18, 2014">
 	</p>
 	<p>
-		<label for="mes-event-venue"><?php _e( 'Event Venue:', 'maxfu-event-system' ); ?></label>
+		<label for="mes-event-venue"><?php _e( 'Event Venue:', 'max-event-sys' ); ?></label>
 		<input type="text" id="mes-event-venue" name="mes-event-venue" class="widefat" value="<?php echo $event_venue; ?>" placeholder="eg. Times Square">
 	</p>
   <p>
-		<label for="mes-event-rsvp"><?php _e( 'RSVP Availability:', 'maxfu-event-system' ); ?></label>
+		<label for="mes-event-rsvp"><?php _e( 'RSVP Availability:', 'max-event-sys' ); ?></label>
     <select name="mes-event-rsvp" id="mes-event-rsvp">
 			<option <?php echo ( $event_rsvp === 'All' ) ? 'selected' : '' ?>>All</option>
 			<option <?php echo ( $event_rsvp === 'Member' ) ? 'selected' : '' ?>>Member</option>
@@ -192,7 +192,7 @@ function mes_widget_style() {
 	if ( is_active_widget( '', '', 'mes_upcoming_events', true ) ) {
 		wp_enqueue_style(
 			'upcoming-events',
-			STYLES . 'maxfu-event-system.css',
+			STYLES . 'max-event-sys.css',
 			false,
 			'1.0',
 			'all'
@@ -290,10 +290,10 @@ add_action( 'save_post', 'mes_save_event_info' );
 function mes_custom_columns_head( $defaults ) {
 	unset( $defaults['date'] );
 
-	$defaults['event_start_date'] = __( 'Start Date', 'maxfu-event-system' );
-	$defaults['event_end_date'] = __( 'End Date', 'maxfu-event-system' );
-	$defaults['event_venue'] = __( 'Venue', 'maxfu-event-system' );
-  $defaults['event_rsvp'] = __( 'RSVP', 'maxfu-event-system' );
+	$defaults['event_start_date'] = __( 'Start Date', 'max-event-sys' );
+	$defaults['event_end_date'] = __( 'End Date', 'max-event-sys' );
+	$defaults['event_venue'] = __( 'Venue', 'max-event-sys' );
+  $defaults['event_rsvp'] = __( 'RSVP', 'max-event-sys' );
 
 	return $defaults;
 }
@@ -331,7 +331,7 @@ add_action( 'manage_event_posts_custom_column', 'mes_custom_columns_content', 10
 /**
  * Including the widget
  */
-include( 'inc/widget-maxfu-event-system.php' );
+include( 'inc/widget-max-event-sys.php' );
 
 /**
  * Adding Template
@@ -360,7 +360,7 @@ add_filter( 'archive_template', 'get_event_archive_template' ) ;
 function mes_add_event_news_metabox() {
   add_meta_box(
     'mes-event-news-metabox',
-    __( 'Event News', 'maxfu-event-system' ),
+    __( 'Event News', 'max-event-sys' ),
     'display_event_news_meta_box',
     'event',
     'normal',

@@ -13,7 +13,7 @@
 		<div class="container">
 			<div class="media-container-row">
 				<div class="title col-12">
-					<h2 class="align-center mbr-bold mbr-white mbr-fonts-style display-1"><a href="<?php echo get_post_type_archive_link( 'event' ); ?>" title="<?php _e( 'Events', 'maxfu-event-system' ); ?>"><?php _e( 'Events', 'maxfu-event-system' ); ?></a></h2>
+					<h2 class="align-center mbr-bold mbr-white mbr-fonts-style display-1"><a href="<?php echo get_post_type_archive_link( 'event' ); ?>" title="<?php _e( 'Events', 'max-event-sys' ); ?>"><?php _e( 'Events', 'max-event-sys' ); ?></a></h2>
 				</div>
 			</div>
 		</div>
@@ -67,7 +67,7 @@
 						<?php else: ?>
 							<!-- article -->
 							<article>
-								<h2><?php _e( 'Sorry, nothing to display.', 'maxfu-event-system' ); ?></h2>
+								<h2><?php _e( 'Sorry, nothing to display.', 'max-event-sys' ); ?></h2>
 							</article>
 							<!-- /article -->
 						<?php endif; ?>
