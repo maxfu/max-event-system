@@ -4,7 +4,7 @@
  * Plugin URI:
  * Description: A plugin to show a list of upcoming events on the front-end. Based on Bilal Shahid's article.
  * Version: 1.0
- * Author: Max Fu
+ * Author: Max
  * Author URI:
  * License: GPL2
  * Text Domain:       max-event-sys
