@@ -33,43 +33,66 @@ add_action( 'init', 'mes_load_textdomain' );
 /**
  * Registering custom post type for events
  */
-function mes_custom_post_type() {
-	$labels = array(
-		'name'								=>	__( 'Events', 'max-event-sys' ),
-		'singular_name'				=>	__( 'Event', 'max-event-sys' ),
-		'add_new'							=>	__( 'Add New', 'max-event-sys' ),
-		'add_new_item'				=>	__( 'Add New Event', 'max-event-sys' ),
-		'all_items'						=>	__( 'All Events', 'max-event-sys' ),
-		'edit_item'						=>	__( 'Edit Event', 'max-event-sys' ),
-		'new_item'						=>	__( 'New Event', 'max-event-sys' ),
-		'view_item'						=>	__( 'View Event', 'max-event-sys' ),
-		'not_found'						=>	__( 'No Events Found', 'max-event-sys' ),
-		'not_found_in_trash'	=>	__( 'No Events Found in Trash', 'max-event-sys' )
-	);
+ if ( ! function_exists('mes_custom_post_type') ) {
 
-	$supports = array(
-		'title',
-		'editor',
-		'excerpt',
-    'thumbnail'
-	);
+ // Register Custom Post Type
+ function mes_custom_post_type() {
 
-	$args = array(
-		'label'			=>	__( 'Events', 'max-event-sys' ),
-		'labels'		=>	$labels,
-		'description'	=>	__( 'A list of upcoming events', 'max-event-sys' ),
-		'public'		=>	true,
-		'show_in_menu'	=>	true,
-		'menu_icon'		=>	IMAGES . 'event.svg',
-		'has_archive'	=>	true,
-		'rewrite'		=>	true,
-		'supports'		=>	$supports
-	);
+ 	$labels = array(
+ 		'name'                  => _x( 'Events', 'Post Type General Name', 'max-event-sys' ),
+ 		'singular_name'         => _x( 'Event', 'Post Type Singular Name', 'max-event-sys' ),
+ 		'menu_name'             => __( 'Events', 'max-event-sys' ),
+ 		'name_admin_bar'        => __( 'Events', 'max-event-sys' ),
+ 		'archives'              => __( 'Event Archives', 'max-event-sys' ),
+ 		'attributes'            => __( 'Event Attributes', 'max-event-sys' ),
+ 		'parent_item_colon'     => __( 'Parent Event:', 'max-event-sys' ),
+ 		'all_items'             => __( 'All Events', 'max-event-sys' ),
+ 		'add_new_item'          => __( 'Add New Event', 'max-event-sys' ),
+ 		'add_new'               => __( 'Add New', 'max-event-sys' ),
+ 		'new_item'              => __( 'New Event', 'max-event-sys' ),
+ 		'edit_item'             => __( 'Edit Event', 'max-event-sys' ),
+ 		'update_item'           => __( 'Update Event', 'max-event-sys' ),
+ 		'view_item'             => __( 'View Event', 'max-event-sys' ),
+ 		'view_items'            => __( 'View Events', 'max-event-sys' ),
+ 		'search_items'          => __( 'Search Event', 'max-event-sys' ),
+ 		'not_found'             => __( 'Not found', 'max-event-sys' ),
+ 		'not_found_in_trash'    => __( 'Not found in Trash', 'max-event-sys' ),
+ 		'featured_image'        => __( 'Featured Image', 'max-event-sys' ),
+ 		'set_featured_image'    => __( 'Set featured image', 'max-event-sys' ),
+ 		'remove_featured_image' => __( 'Remove featured image', 'max-event-sys' ),
+ 		'use_featured_image'    => __( 'Use as featured image', 'max-event-sys' ),
+ 		'insert_into_item'      => __( 'Insert into event', 'max-event-sys' ),
+ 		'uploaded_to_this_item' => __( 'Uploaded to this event', 'max-event-sys' ),
+ 		'items_list'            => __( 'Events list', 'max-event-sys' ),
+ 		'items_list_navigation' => __( 'Events list navigation', 'max-event-sys' ),
+ 		'filter_items_list'     => __( 'Filter events list', 'max-event-sys' ),
+ 	);
+ 	$args = array(
+ 		'label'                 => __( 'Event', 'max-event-sys' ),
+ 		'description'           => __( 'Post Type Description', 'max-event-sys' ),
+ 		'labels'                => $labels,
+ 		'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+ 		'taxonomies'            => array( 'category' ),
+ 		'hierarchical'          => false,
+ 		'public'                => true,
+ 		'show_ui'               => true,
+ 		'show_in_menu'          => true,
+ 		'menu_position'         => 5,
+ 		'menu_icon'             => IMAGES . 'event.svg',
+ 		'show_in_admin_bar'     => true,
+ 		'show_in_nav_menus'     => true,
+ 		'can_export'            => true,
+ 		'has_archive'           => true,
+ 		'exclude_from_search'   => false,
+ 		'publicly_queryable'    => true,
+ 		'capability_type'       => 'post',
+ 	);
+ 	register_post_type( 'event', $args );
 
-	register_post_type( 'event', $args );
-}
-add_action( 'init', 'mes_custom_post_type' );
+ }
+ add_action( 'init', 'mes_custom_post_type', 0 );
 
+ }
 
 /**
  * Flushing rewrite rules on plugin activation/deactivation
@@ -106,8 +129,8 @@ function mes_render_event_info_metabox( $post ) {
 	wp_nonce_field( basename( __FILE__ ), 'mes-event-info-nonce' );
 
 	//get previously saved meta values (if any)
-	$event_start_date = get_post_meta( $post->ID, 'event-start-date', true );
-	$event_end_date = get_post_meta( $post->ID, 'event-end-date', true );
+	$event_start_date = get_post_meta( $post->ID, 'event_begin', true );
+	$event_end_date = get_post_meta( $post->ID, 'event_end', true );
 	$event_venue = get_post_meta( $post->ID, 'event-venue', true );
   $event_rsvp = get_post_meta( $post->ID, 'event-rsvp', true );
 
@@ -182,7 +205,7 @@ function mes_admin_script_style( $hook ) {
 		);
 	}
 }
-add_action( 'admin_enqueue_scripts', 'mes_admin_script_style' );
+// add_action( 'admin_enqueue_scripts', 'mes_admin_script_style' );
 
 
 /**
@@ -256,11 +279,11 @@ function mes_save_event_info( $post_id ) {
 
 	//checking for the values and performing necessary actions
 	if ( isset( $_POST['mes-event-start-date'] ) ) {
-    update_post_meta( $post_id, 'event-start-date', myStrtotime( $_POST['mes-event-start-date'] ) );
+    update_post_meta( $post_id, 'event_begin', myStrtotime( $_POST['mes-event-start-date'] ) );
 	}
 
 	if ( isset( $_POST['mes-event-end-date'] ) ) {
-    update_post_meta( $post_id, 'event-end-date', myStrtotime( $_POST['mes-event-end-date'] ) );
+    update_post_meta( $post_id, 'event_end', myStrtotime( $_POST['mes-event-end-date'] ) );
 	}
 
 	if ( isset( $_POST['mes-event-venue'] ) ) {
@@ -306,12 +329,12 @@ add_filter( 'manage_edit-event_columns', 'mes_custom_columns_head', 10 );
  */
 function mes_custom_columns_content( $column_name, $post_id ) {
 	if ( 'event_start_date' == $column_name ) {
-		$start_date = get_post_meta( $post_id, 'event-start-date', true );
+		$start_date = get_post_meta( $post_id, 'event_begin', true );
 		echo date( 'M d, Y H:i', $start_date );
 	}
 
 	if ( 'event_end_date' == $column_name ) {
-		$end_date = get_post_meta( $post_id, 'event-end-date', true );
+		$end_date = get_post_meta( $post_id, 'event_end', true );
 		echo date( 'M d, Y H:i', $end_date );
 	}
 
