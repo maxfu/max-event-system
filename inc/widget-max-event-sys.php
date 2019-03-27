@@ -11,12 +11,12 @@ class Upcoming_Events extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'class'			=>	'mes_upcoming_events',
-			'description'	=>	__( 'A widget to display a list of upcoming events', 'max-event-sys' )
+			'description'	=>	__( 'A widget to display a list of upcoming events', 'max-event' )
 		);
 
 		parent::__construct(
 			'mes_upcoming_events',			//base id
-			__( 'Upcoming Events', 'max-event-sys' ),	//title
+			__( 'Upcoming Events', 'max-event' ),	//title
 			$widget_ops
 		);
 	}
@@ -37,11 +37,11 @@ class Upcoming_Events extends WP_Widget {
 
 		<!-- Rendering the widget form in the admin -->
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'max-event-sys' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'max-event' ); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" class="widefat" value="<?php echo esc_attr( $instance['title'] ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'number_events' ); ?>"><?php _e( 'Number of events to show', 'max-event-sys' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'number_events' ); ?>"><?php _e( 'Number of events to show', 'max-event' ); ?></label>
 			<select id="<?php echo $this->get_field_id( 'number_events' ); ?>" name="<?php echo $this->get_field_name( 'number_events' ); ?>" class="widefat">
 				<?php for ( $i = 1; $i <= 10; $i++ ): ?>
 					<option value="<?php echo $i; ?>" <?php selected( $i, $instance['number_events'], true ); ?>><?php echo $i; ?></option>
@@ -83,7 +83,7 @@ class Upcoming_Events extends WP_Widget {
 		$meta_quer_args = array(
 			'relation'	=>	'AND',
 			array(
-				'key'		=>	'event-end-date',
+				'key'		=>	'event_end',
 				'value'		=>	time(),
 				'compare'	=>	'>='
 			)
@@ -94,7 +94,7 @@ class Upcoming_Events extends WP_Widget {
 			'posts_per_page'		=>	$instance['number_events'],
 			'post_status'			=>	'publish',
 			'ignore_sticky_posts'	=>	true,
-			'meta_key'				=>	'event-start-date',
+			'meta_key'				=>	'event_begin',
 			'orderby'				=>	'meta_value_num',
 			'order'					=>	'ASC',
 			'meta_query'			=>	$meta_quer_args
@@ -111,8 +111,8 @@ class Upcoming_Events extends WP_Widget {
 
 		<ul class="mes_event_entries">
 			<?php while( $upcoming_events->have_posts() ): $upcoming_events->the_post();
-				$event_start_date = get_post_meta( get_the_ID(), 'event-start-date', true );
-				$event_end_date = get_post_meta( get_the_ID(), 'event-end-date', true );
+				$event_start_date = get_post_meta( get_the_ID(), 'event_begin', true );
+				$event_end_date = get_post_meta( get_the_ID(), 'event_end', true );
 				$event_venue = get_post_meta( get_the_ID(), 'event-venue', true );
 			?>
 				<li class="mes_event_entry">
