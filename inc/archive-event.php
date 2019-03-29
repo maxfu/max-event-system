@@ -13,7 +13,7 @@
 		<div class="container">
 			<div class="media-container-row">
 				<div class="title col-12">
-					<h2 class="align-center mbr-bold mbr-white mbr-fonts-style display-1"><a href="<?php echo get_post_type_archive_link( 'event' ); ?>" title="<?php _e( 'Events', 'max-event-sys' ); ?>"><?php _e( 'Events', 'max-event-sys' ); ?></a></h2>
+					<h2 class="align-center mbr-bold mbr-white mbr-fonts-style display-1"><a href="<?php echo get_post_type_archive_link( 'event' ); ?>" title="<?php _e( 'Events', 'max-event' ); ?>"><?php _e( 'Events', 'max-event' ); ?></a></h2>
 				</div>
 			</div>
 		</div>
@@ -28,15 +28,15 @@
 						<?php $args = array(
 							'post_status' => 'publish',
 							'post_type' => 'event',
-							'meta_key' => 'event-start-date',
+							'meta_key' => 'event_begin',
 							'orderby' => 'meta_value_num',
 							'order' => 'DESC'
 						); ?>
 						<?php $custom_query = new WP_Query( $args ); ?>
 						<?php if ( $custom_query->have_posts() ) : while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
 							<!-- article -->
-							<?php $event_start_date = get_post_meta( get_the_ID(), 'event-start-date', true ); ?>
-							<?php $event_end_date = get_post_meta( get_the_ID(), 'event-end-date', true ); ?>
+							<?php $event_start_date = get_post_meta( get_the_ID(), 'event_begin', true ); ?>
+							<?php $event_end_date = get_post_meta( get_the_ID(), 'event_end', true ); ?>
 							<?php $event_venue = get_post_meta( get_the_ID(), 'event-venue', true ); ?>
 							<?php $event_rsvp = get_post_meta( get_the_ID(), 'event-rsvp', true ); ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -67,7 +67,7 @@
 						<?php else: ?>
 							<!-- article -->
 							<article>
-								<h2><?php _e( 'Sorry, nothing to display.', 'max-event-sys' ); ?></h2>
+								<h2><?php _e( 'Sorry, nothing to display.', 'max-event' ); ?></h2>
 							</article>
 							<!-- /article -->
 						<?php endif; ?>

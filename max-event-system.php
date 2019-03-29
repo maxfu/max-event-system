@@ -25,7 +25,7 @@ define( 'SCRIPTS', ROOT . '/js/' );
  * @since 1.0.0
  */
 function mes_load_textdomain() {
-  load_plugin_textdomain( 'max-event-sys', false, basename( dirname( __FILE__ ) ) . '/languages' );
+  load_plugin_textdomain( 'max-event', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 
 add_action( 'init', 'mes_load_textdomain' );
@@ -39,37 +39,37 @@ add_action( 'init', 'mes_load_textdomain' );
  function mes_custom_post_type() {
 
  	$labels = array(
- 		'name'                  => _x( 'Events', 'Post Type General Name', 'max-event-sys' ),
- 		'singular_name'         => _x( 'Event', 'Post Type Singular Name', 'max-event-sys' ),
- 		'menu_name'             => __( 'Events', 'max-event-sys' ),
- 		'name_admin_bar'        => __( 'Events', 'max-event-sys' ),
- 		'archives'              => __( 'Event Archives', 'max-event-sys' ),
- 		'attributes'            => __( 'Event Attributes', 'max-event-sys' ),
- 		'parent_item_colon'     => __( 'Parent Event:', 'max-event-sys' ),
- 		'all_items'             => __( 'All Events', 'max-event-sys' ),
- 		'add_new_item'          => __( 'Add New Event', 'max-event-sys' ),
- 		'add_new'               => __( 'Add New', 'max-event-sys' ),
- 		'new_item'              => __( 'New Event', 'max-event-sys' ),
- 		'edit_item'             => __( 'Edit Event', 'max-event-sys' ),
- 		'update_item'           => __( 'Update Event', 'max-event-sys' ),
- 		'view_item'             => __( 'View Event', 'max-event-sys' ),
- 		'view_items'            => __( 'View Events', 'max-event-sys' ),
- 		'search_items'          => __( 'Search Event', 'max-event-sys' ),
- 		'not_found'             => __( 'Not found', 'max-event-sys' ),
- 		'not_found_in_trash'    => __( 'Not found in Trash', 'max-event-sys' ),
- 		'featured_image'        => __( 'Featured Image', 'max-event-sys' ),
- 		'set_featured_image'    => __( 'Set featured image', 'max-event-sys' ),
- 		'remove_featured_image' => __( 'Remove featured image', 'max-event-sys' ),
- 		'use_featured_image'    => __( 'Use as featured image', 'max-event-sys' ),
- 		'insert_into_item'      => __( 'Insert into event', 'max-event-sys' ),
- 		'uploaded_to_this_item' => __( 'Uploaded to this event', 'max-event-sys' ),
- 		'items_list'            => __( 'Events list', 'max-event-sys' ),
- 		'items_list_navigation' => __( 'Events list navigation', 'max-event-sys' ),
- 		'filter_items_list'     => __( 'Filter events list', 'max-event-sys' ),
+ 		'name'                  => _x( 'Events', 'Post Type General Name', 'max-event' ),
+ 		'singular_name'         => _x( 'Event', 'Post Type Singular Name', 'max-event' ),
+ 		'menu_name'             => __( 'Events', 'max-event' ),
+ 		'name_admin_bar'        => __( 'Events', 'max-event' ),
+ 		'archives'              => __( 'Event Archives', 'max-event' ),
+ 		'attributes'            => __( 'Event Attributes', 'max-event' ),
+ 		'parent_item_colon'     => __( 'Parent Event:', 'max-event' ),
+ 		'all_items'             => __( 'All Events', 'max-event' ),
+ 		'add_new_item'          => __( 'Add New Event', 'max-event' ),
+ 		'add_new'               => __( 'Add New', 'max-event' ),
+ 		'new_item'              => __( 'New Event', 'max-event' ),
+ 		'edit_item'             => __( 'Edit Event', 'max-event' ),
+ 		'update_item'           => __( 'Update Event', 'max-event' ),
+ 		'view_item'             => __( 'View Event', 'max-event' ),
+ 		'view_items'            => __( 'View Events', 'max-event' ),
+ 		'search_items'          => __( 'Search Event', 'max-event' ),
+ 		'not_found'             => __( 'Not found', 'max-event' ),
+ 		'not_found_in_trash'    => __( 'Not found in Trash', 'max-event' ),
+ 		'featured_image'        => __( 'Featured Image', 'max-event' ),
+ 		'set_featured_image'    => __( 'Set featured image', 'max-event' ),
+ 		'remove_featured_image' => __( 'Remove featured image', 'max-event' ),
+ 		'use_featured_image'    => __( 'Use as featured image', 'max-event' ),
+ 		'insert_into_item'      => __( 'Insert into event', 'max-event' ),
+ 		'uploaded_to_this_item' => __( 'Uploaded to this event', 'max-event' ),
+ 		'items_list'            => __( 'Events list', 'max-event' ),
+ 		'items_list_navigation' => __( 'Events list navigation', 'max-event' ),
+ 		'filter_items_list'     => __( 'Filter events list', 'max-event' ),
  	);
  	$args = array(
- 		'label'                 => __( 'Event', 'max-event-sys' ),
- 		'description'           => __( 'Post Type Description', 'max-event-sys' ),
+ 		'label'                 => __( 'Event', 'max-event' ),
+ 		'description'           => __( 'Post Type Description', 'max-event' ),
  		'labels'                => $labels,
  		'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
  		'taxonomies'            => array( 'category' ),
@@ -110,7 +110,7 @@ register_activation_hook( __FILE__, 'mes_activation_deactivation' );
 function mes_add_event_info_metabox() {
 	add_meta_box(
 		'mes-event-info-metabox',
-		__( 'Event Info', 'max-event-sys' ),
+		__( 'Event Info', 'max-event' ),
 		'mes_render_event_info_metabox',
 		'event',
 		'side',
@@ -142,19 +142,19 @@ function mes_render_event_info_metabox( $post ) {
 
 	?>
 	<p>
-		<label for="mes-event-start-date"><?php _e( 'Event Start Date:', 'max-event-sys' ); ?></label>
+		<label for="mes-event-start-date"><?php _e( 'Event Start Date:', 'max-event' ); ?></label>
 		<input type="text" id="mes-event-start-date" name="mes-event-start-date" class="widefat mes-event-date-input" value="<?php echo date( 'M d, Y H:i', $event_start_date ); ?>" placeholder="Format: February 18, 2014">
 	</p>
 	<p>
-		<label for="mes-event-end-date"><?php _e( 'Event End Date:', 'max-event-sys' ); ?></label>
+		<label for="mes-event-end-date"><?php _e( 'Event End Date:', 'max-event' ); ?></label>
 		<input type="text" id="mes-event-end-date" name="mes-event-end-date" class="widefat mes-event-date-input" value="<?php echo date( 'M d, Y H:i', $event_end_date ); ?>" placeholder="Format: February 18, 2014">
 	</p>
 	<p>
-		<label for="mes-event-venue"><?php _e( 'Event Venue:', 'max-event-sys' ); ?></label>
+		<label for="mes-event-venue"><?php _e( 'Event Venue:', 'max-event' ); ?></label>
 		<input type="text" id="mes-event-venue" name="mes-event-venue" class="widefat" value="<?php echo $event_venue; ?>" placeholder="eg. Times Square">
 	</p>
   <p>
-		<label for="mes-event-rsvp"><?php _e( 'RSVP Availability:', 'max-event-sys' ); ?></label>
+		<label for="mes-event-rsvp"><?php _e( 'RSVP Availability:', 'max-event' ); ?></label>
     <select name="mes-event-rsvp" id="mes-event-rsvp">
 			<option <?php echo ( $event_rsvp === 'All' ) ? 'selected' : '' ?>>All</option>
 			<option <?php echo ( $event_rsvp === 'Member' ) ? 'selected' : '' ?>>Member</option>
@@ -295,11 +295,11 @@ function mes_save_event_info( $post_id ) {
 
   if ( $_POST['post_type'] == "event") {
     // Store data in post meta table if present in post data
-    if ( isset($_POST['event-news'] ) && $_POST['event-news'] != '' ) {
-      update_post_meta( $post_id, 'event-news', $_POST['event-news'] );
+    if ( isset($_POST['event-details'] ) && $_POST['event-details'] != '' ) {
+      update_post_meta( $post_id, 'event-details', $_POST['event-details'] );
     }
   } else {
-    delete_post_meta( $post_id, 'event-news' );
+    delete_post_meta( $post_id, 'event-details' );
   }
 }
 add_action( 'save_post', 'mes_save_event_info' );
@@ -312,10 +312,10 @@ add_action( 'save_post', 'mes_save_event_info' );
 function mes_custom_columns_head( $defaults ) {
 	unset( $defaults['date'] );
 
-	$defaults['event_start_date'] = __( 'Start Date', 'max-event-sys' );
-	$defaults['event_end_date'] = __( 'End Date', 'max-event-sys' );
-	$defaults['event_venue'] = __( 'Venue', 'max-event-sys' );
-  $defaults['event_rsvp'] = __( 'RSVP', 'max-event-sys' );
+	$defaults['event_start_date'] = __( 'Start Date', 'max-event' );
+	$defaults['event_end_date'] = __( 'End Date', 'max-event' );
+	$defaults['event_venue'] = __( 'Venue', 'max-event' );
+  $defaults['event_rsvp'] = __( 'RSVP', 'max-event' );
 
 	return $defaults;
 }
@@ -379,28 +379,28 @@ function get_event_archive_template( $archive_template ) {
 add_filter( 'archive_template', 'get_event_archive_template' ) ;
 
 // Create Missionary Meta Box
-function mes_add_event_news_metabox() {
+function mes_add_event_details_metabox() {
   add_meta_box(
-    'mes-event-news-metabox',
-    __( 'Event News', 'max-event-sys' ),
-    'display_event_news_meta_box',
+    'mes-event-details-metabox',
+    __( 'Event Details', 'max-event' ),
+    'display_event_details_meta_box',
     'event',
     'normal',
     'high'
   );
 }
-add_action( 'add_meta_boxes', 'mes_add_event_news_metabox' );
+add_action( 'add_meta_boxes', 'mes_add_event_details_metabox' );
 
 // Put Fields In Missionary Meta Box
-function display_event_news_meta_box( $post ) {
-  $event_news = get_post_meta($post->ID, 'event-news', true);
+function display_event_details_meta_box( $post ) {
+  $event_details = get_post_meta($post->ID, 'event-details', true);
 ?>
-<table>
+<table style=" width: 100%;">
   <tr>
-    <td><?php wp_editor($event_news, 'event-news', array(
+    <td><?php wp_editor($event_details, 'event-details', array(
             'wpautop'       =>      true,
             'media_buttons' =>      true,
-            'textarea_name' =>      'event-news'
+            'textarea_name' =>      'event-details'
             ));
         ?>
       </td>
