@@ -255,7 +255,6 @@ if (!function_exists('myStrtotime')) {
   }
 }
 
-
 /**
  * Saving the event along with its meta values
  * @param  int $post_id The id of the current post
@@ -408,4 +407,48 @@ function display_event_news_meta_box( $post ) {
     </tr>
 </table>
 <?php
+}
+
+function get_template_html( $template_name, $attributes = null ) {
+    if ( ! $attributes ) {
+        $attributes = array();
+    }
+    ob_start();
+    require( 'templates/' . $template_name . '.php');
+    $html = ob_get_contents();
+    ob_end_clean();
+    return $html;
+}
+
+add_shortcode( 'chamber-events', 'render_chamber_events' );
+function render_chamber_events( $attributes, $content = null ) {
+    // Parse shortcode attributes
+    $default_attributes = array( 'show_title' => false );
+    $attributes = shortcode_atts( $default_attributes, $attributes );
+
+    return get_template_html( 'chamber-events', $attributes );
+}
+
+add_shortcode( 'member-events', 'render_member_events' );
+function render_member_events( $attributes, $content = null ) {
+    // Parse shortcode attributes
+    $default_attributes = array( 'show_title' => false );
+    $attributes = shortcode_atts( $default_attributes, $attributes );
+
+    if ( is_user_logged_in() ) {
+    // Error messages
+    $errors = array();
+    if ( isset( $_REQUEST['error'] ) ) {
+        $error_codes = explode( ',', $_REQUEST['error'] );
+
+        foreach ( $error_codes as $code ) {
+            $errors []= $this->get_error_message( $code );
+        }
+    }
+    $attributes['errors'] = $errors;
+
+    return get_template_html( 'member-events', $attributes );
+    } else {
+        return __( 'You are not signed in yet.', 'max-user' );
+    }
 }
