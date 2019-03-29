@@ -16,6 +16,3 @@
 <?php endwhile; ?>
 <?php if (function_exists("ccca_pagination")) { ccca_pagination($custom_loop->max_num_pages); } ?>
 <?php wp_reset_postdata(); ?>
-
-
-
