@@ -442,7 +442,7 @@ function render_member_events( $attributes, $content = null ) {
         $error_codes = explode( ',', $_REQUEST['error'] );
 
         foreach ( $error_codes as $code ) {
-            $errors []= $this->get_error_message( $code );
+            $errors []= get_error_message( $code );
         }
     }
     $attributes['errors'] = $errors;
