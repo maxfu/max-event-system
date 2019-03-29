@@ -436,18 +436,7 @@ function render_member_events( $attributes, $content = null ) {
     $attributes = shortcode_atts( $default_attributes, $attributes );
 
     if ( is_user_logged_in() ) {
-    // Error messages
-    $errors = array();
-    if ( isset( $_REQUEST['error'] ) ) {
-        $error_codes = explode( ',', $_REQUEST['error'] );
-
-        foreach ( $error_codes as $code ) {
-            $errors []= get_error_message( $code );
-        }
-    }
-    $attributes['errors'] = $errors;
-
-    return get_template_html( 'member-events', $attributes );
+        return get_template_html( 'member-events', $attributes );
     } else {
         return __( 'You are not signed in yet.', 'max-user' );
     }
