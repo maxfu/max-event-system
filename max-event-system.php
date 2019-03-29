@@ -429,6 +429,15 @@ function render_chamber_events( $attributes, $content = null ) {
     return get_template_html( 'chamber-events', $attributes );
 }
 
+add_shortcode( 'chapter-events', 'render_chapter_events' );
+function render_chapter_events( $attributes, $content = null ) {
+    // Parse shortcode attributes
+    $default_attributes = array( 'show_title' => false );
+    $attributes = shortcode_atts( $default_attributes, $attributes );
+
+    return get_template_html( 'chapter-events', $attributes );
+}
+
 add_shortcode( 'member-events', 'render_member_events' );
 function render_member_events( $attributes, $content = null ) {
     // Parse shortcode attributes
