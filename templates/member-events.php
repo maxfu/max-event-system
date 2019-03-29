@@ -1,8 +1,3 @@
-// <?php global $current_user; ?>
-// <?php get_currentuserinfo(); ?>
-// <?php $user_info = get_userdata($current_user->ID); ?>
-// <?php $branch = implode(', ', $user_info->roles); ?>
-// <?php echo $branch; ?>
 <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 <?php $custom_loop = new WP_Query(array( 'post_type' => 'event', 'posts_per_page' => 20, 'category_name' => 'member', 'meta_key' => 'event_begin', 'orderby' => 'meta_value_num', 'order' => 'DESC' )); ?>
 <?php while ( $custom_loop->have_posts() ) : $custom_loop->the_post(); ?>
