@@ -447,6 +447,6 @@ function render_member_events( $attributes, $content = null ) {
     if ( is_user_logged_in() ) {
         return get_template_html( 'member-events', $attributes );
     } else {
-        return __( 'You are not signed in yet.', 'max-user' );
+        return __( 'You are not signed in yet.', 'max-event' );
     }
 }
