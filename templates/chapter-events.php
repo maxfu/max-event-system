@@ -5,7 +5,7 @@ $args = array(
     'nopaging'          => false,
     'posts_per_page'    => '20',
     'tax_query'         => array(
-        'relation' => 'AND',
+        'relation' => 'OR',
         array(
             'taxonomy'         => 'branch',
             'terms'            => 'branch',
