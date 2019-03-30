@@ -8,6 +8,8 @@ $args = array(
         array(
             'taxonomy'  => 'branch',
             'include_children' => true,
+            'field' => 'slug',
+            'terms' => 'politics',
         ),
     ),
     'meta_key' => 'event_begin',
