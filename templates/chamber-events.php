@@ -9,7 +9,7 @@ $args = array(
             'taxonomy'  => 'branch',
             'include_children' => true,
             'field' => 'slug',
-            'terms' => 'politics',
+            'terms' => 'chamber',
         ),
     ),
     'meta_key' => 'event_begin',
