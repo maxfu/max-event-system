@@ -450,3 +450,46 @@ function render_member_events( $attributes, $content = null ) {
         return __( 'You are not signed in yet.', 'max-event' );
     }
 }
+
+if ( ! function_exists( 'mes_register_branch' ) ) {
+
+// Register Custom Taxonomy
+function mes_register_branch() {
+
+	$labels = array(
+		'name'                       => _x( 'Branches', 'Taxonomy General Name', 'max-event' ),
+		'singular_name'              => _x( 'Branch', 'Taxonomy Singular Name', 'max-event' ),
+		'menu_name'                  => __( 'Branch', 'max-event' ),
+		'all_items'                  => __( 'All Branches', 'max-event' ),
+		'parent_item'                => __( 'Parent Branch', 'max-event' ),
+		'parent_item_colon'          => __( 'Parent Branch:', 'max-event' ),
+		'new_item_name'              => __( 'New Branch Name', 'max-event' ),
+		'add_new_item'               => __( 'Add New Branch', 'max-event' ),
+		'edit_item'                  => __( 'Edit Branch', 'max-event' ),
+		'update_item'                => __( 'Update Branch', 'max-event' ),
+		'view_item'                  => __( 'View Branch', 'max-event' ),
+		'separate_items_with_commas' => __( 'Separate branches with commas', 'max-event' ),
+		'add_or_remove_items'        => __( 'Add or remove branches', 'max-event' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'max-event' ),
+		'popular_items'              => __( 'Popular Branches', 'max-event' ),
+		'search_items'               => __( 'Search Branches', 'max-event' ),
+		'not_found'                  => __( 'Not Found', 'max-event' ),
+		'no_terms'                   => __( 'No Branches', 'max-event' ),
+		'items_list'                 => __( 'Branches list', 'max-event' ),
+		'items_list_navigation'      => __( 'Branches list navigation', 'max-event' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'branch', array( 'event' ), $args );
+
+}
+add_action( 'init', 'mes_register_branch', 0 );
+
+}
