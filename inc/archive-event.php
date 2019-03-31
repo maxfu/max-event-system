@@ -29,13 +29,6 @@
 						<?php $args = array(
 							'post_status' => 'publish',
 							'post_type' => 'event',
-                            'meta_query' => array(
-                                array(
-                                    'key' => 'event_begin',
-                                    'value' => $today,
-                                    'compare' => '>=',
-                                ),
-                            ),
 							'meta_key' => 'event_begin',
 							'orderby' => 'meta_value_num',
 							'order' => 'DESC',
@@ -44,6 +37,9 @@
 						<?php if ( $custom_query->have_posts() ) : while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
 							<!-- article -->
 							<?php $event_start_date = get_post_meta( get_the_ID(), 'event_begin', true ); ?>
+                            <?php if ( date( get_option('date_format'), $event_start_date ) >= $today ) {
+                                echo $today; 
+                            } ?>
 							<?php $event_end_date = get_post_meta( get_the_ID(), 'event_end', true ); ?>
 							<?php $event_venue = get_post_meta( get_the_ID(), 'event-venue', true ); ?>
 							<?php $event_rsvp = get_post_meta( get_the_ID(), 'event-rsvp', true ); ?>
