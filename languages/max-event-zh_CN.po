@@ -34,7 +34,7 @@ msgstr "Event Attributes"
 
 #: 
 msgid "To reset your password, visit the following address:"
-msgstr ""
+msgstr "精彩活动即将呈现！"
 
 #: 
 msgid "Thanks!"
