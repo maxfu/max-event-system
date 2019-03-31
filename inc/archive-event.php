@@ -24,7 +24,7 @@
         <div class="container">
             <div class="media-container-row">
                 <div class="mbr-text col-12 mbr-fonts-style display-7">
-                        <?php $today = myStrtotime( date( get_option('date_format') ) ); ?>
+                        <?php $today = date( get_option('date_format') ); ?>
                         <?php echo date( 'F d, Y', $today ); ?>
 						<?php $args = array(
 							'post_status' => 'publish',
