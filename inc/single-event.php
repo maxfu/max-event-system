@@ -111,7 +111,7 @@
               </p>
   			</div>
   		  </div>
-  				<?php if ( $event_rsvp == 'Yes' ) { ?>
+  				<?php if ( $event_rsvp == 'All' ) { ?>
   					<div class="media-container-row">
   						<div class="mbr-text col-9 col-md-9 mbr-fonts-style display-7">
   							<style type="text/css">
