@@ -59,8 +59,8 @@
 							          <h2 class="mbr-title pt-2 mbr-fonts-style display-3"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
 							          <div class="mbr-section-text">
                                         <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
-                                            <span class="date"><?php echo __('Start Date: ', 'max-event' ) . date( 'F d, Y', $event_start_date ); ?></span><br>
-											<span class="date"><?php echo __('End Date: ', 'max-event' ) . date( 'F d, Y', $event_end_date ); ?></span><br>
+                                            <span class="date"><?php echo __('Start Date: ', 'max-event' ) . date( get_option('date_format'), $event_start_date ); ?></span><br>
+											<span class="date"><?php echo __('End Date: ', 'max-event' ) . date( get_option('date_format'), $event_end_date ); ?></span><br>
 										</p>
 							          </div>
 							      </div>
