@@ -69,7 +69,7 @@
 						<?php else: ?>
 							<!-- article -->
 							<article>
-								<h2><?php _e( 'Sorry, nothing to display.', 'max-event' ); ?></h2>
+								<h2><?php _e( 'Exciting events coming soon!', 'max-event' ); ?></h2>
 							</article>
 							<!-- /article -->
 						<?php endif; ?>
