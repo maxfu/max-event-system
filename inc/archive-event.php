@@ -24,13 +24,20 @@
         <div class="container">
             <div class="media-container-row">
                 <div class="mbr-text col-12 mbr-fonts-style display-7">
-
+                        <?php $today = myStrtotime( date( get_option('date_format') ) ); ?>
 						<?php $args = array(
 							'post_status' => 'publish',
 							'post_type' => 'event',
+                            'meta_query' => array(
+                                array(
+                                    'key' => 'event_begin',
+                                    'value' => $today,
+                                    'compare' => '>=',
+                                ),
+                            ),
 							'meta_key' => 'event_begin',
 							'orderby' => 'meta_value_num',
-							'order' => 'DESC'
+							'order' => 'DESC',
 						); ?>
 						<?php $custom_query = new WP_Query( $args ); ?>
 						<?php if ( $custom_query->have_posts() ) : while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
