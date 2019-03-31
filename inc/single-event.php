@@ -98,33 +98,19 @@
           <div class="media-container-row">
             <div class="mbr-text col-12 mbr-fonts-style display-7"><?php the_content(); ?></div>
           </div>
-          <div class="media-container-row">
-  					<div class="mbr-text col-9 col-md-9 mbr-fonts-style display-7">
-              <p>
-                <?php _e($event_details); ?>
-              </p>
-  						<p>
-  							<?php echo 'Event Start Date: ' . date( 'd/m/Y g:i A', $event_start_date ); ?><br>
-  							<?php echo 'Event End Date: ' . date( 'd/m/Y g:i A', $event_end_date ); ?><br>
-  							<?php echo 'Event Venue: ' . $event_venue; ?><br>
-  							<?php echo 'Event RSVP: ' . $event_rsvp; ?><br>
-  						</p>
-  					</div>
-  				</div>
         <?php } else { ?>
           <div class="media-container-row">
-  					<div class="mbr-text col-9 col-md-9 mbr-fonts-style display-7">
+  			<div class="mbr-text col-9 col-md-9 mbr-fonts-style display-7">
               <p>
                 <?php _e($event_details); ?>
               </p>
-  						<p>
-  							<?php echo 'Event Start Date: ' . date( 'd/m/Y g:i A', $event_start_date ); ?><br>
-  							<?php echo 'Event End Date: ' . date( 'd/m/Y g:i A', $event_end_date ); ?><br>
-  							<?php echo 'Event Venue: ' . $event_venue; ?><br>
-  							<?php echo 'Event RSVP: ' . $event_rsvp; ?><br>
-  						</p>
-  					</div>
-  				</div>
+  			  <p>
+                <?php echo 'Event Start Date: ' . date( 'd/m/Y g:i A', $event_start_date ); ?><br>
+                <?php echo 'Event End Date: ' . date( 'd/m/Y g:i A', $event_end_date ); ?><br>
+                <?php echo 'Event Venue: ' . $event_venue; ?><br>
+              </p>
+  			</div>
+  		  </div>
   				<?php if ( $event_rsvp == 'Yes' ) { ?>
   					<div class="media-container-row">
   						<div class="mbr-text col-9 col-md-9 mbr-fonts-style display-7">
