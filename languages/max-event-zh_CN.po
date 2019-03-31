@@ -9,15 +9,16 @@ msgstr ""
 
 #: 
 msgid "Events"
-msgstr "活动"
+msgstr "精彩活动"
 
 #: 
-msgid "Registering new users is currently not allowed."
-msgstr "抱歉，没有可显示的内容。"
+#, fuzzy
+msgid "Event"
+msgstr "精彩活动"
 
 #: 
 msgid "You are not signed in yet."
-msgstr "活动详情"
+msgstr "您尚未登陆。"
 
 #: 
 msgid "Hello!"
@@ -25,11 +26,11 @@ msgstr ""
 
 #: 
 msgid "You asked us to reset your password for your account using the email address %s."
-msgstr ""
+msgstr "活动归档"
 
 #: 
 msgid "If this was a mistake, or you didn't ask for a password reset, just ignore this email and nothing will happen."
-msgstr ""
+msgstr "Event Attributes"
 
 #: 
 msgid "To reset your password, visit the following address:"

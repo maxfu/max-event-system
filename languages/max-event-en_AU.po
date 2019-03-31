@@ -12,12 +12,13 @@ msgid "Events"
 msgstr "Events"
 
 #: 
-msgid "Registering new users is currently not allowed."
-msgstr "Sorry, nothing to display."
+#, fuzzy
+msgid "Event"
+msgstr "Event"
 
 #: 
 msgid "You are not signed in yet."
-msgstr "Event Details"
+msgstr "You are not signed in yet."
 
 #: 
 msgid "Hello!"
@@ -25,11 +26,11 @@ msgstr ""
 
 #: 
 msgid "You asked us to reset your password for your account using the email address %s."
-msgstr ""
+msgstr "Event Archives"
 
 #: 
 msgid "If this was a mistake, or you didn't ask for a password reset, just ignore this email and nothing will happen."
-msgstr ""
+msgstr "Event Attributes"
 
 #: 
 msgid "To reset your password, visit the following address:"
