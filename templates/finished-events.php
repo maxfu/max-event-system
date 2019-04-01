@@ -4,9 +4,9 @@ $args = array(
     'post_type' => 'event',
     'meta_query' => array(
         array(
-            'key'     => 'event_begin',
+            'key'     => 'event_end',
             'value'   => (int)strtotime("now"),
-            'compare' => '>',
+            'compare' => '<',
             'type'    => 'NUMERIC',
             ),
         ),
