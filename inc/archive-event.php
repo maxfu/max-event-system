@@ -29,6 +29,12 @@
 						<?php $args = array(
 							'post_status' => 'publish',
 							'post_type' => 'event',
+                            'meta_query'        => array(
+                                'meta_key'          => 'event_begin',
+                                'type'              => 'NUMERIC',
+                                'meta_value'        => strtotime("now"),
+                                'meta_compare'      => '>',
+                            ),
 							'meta_key' => 'event_begin',
 							'orderby' => 'meta_value_num',
 							'order' => 'DESC',
@@ -38,7 +44,7 @@
 							<!-- article -->
 							<?php $event_start_date = get_post_meta( get_the_ID(), 'event_begin', true ); ?>
                             <?php if ( (int)$event_start_date >= (int)strtotime("now") ) {
-                                echo $event_start_date . ' ' . strtotime("now"); 
+                                echo $event_start_date . ' ' . strtotime("now");
                             } ?>
 							<?php $event_end_date = get_post_meta( get_the_ID(), 'event_end', true ); ?>
 							<?php $event_venue = get_post_meta( get_the_ID(), 'event-venue', true ); ?>
