@@ -24,17 +24,9 @@
         <div class="container">
             <div class="media-container-row">
                 <div class="mbr-text col-12 mbr-fonts-style display-7">
-                        <?php $today = date( get_option('date_format') ); ?>
-                        <?php echo $today; ?>
 						<?php $args = array(
 							'post_status' => 'publish',
 							'post_type' => 'event',
-                            'meta_query'        => array(
-                                'meta_key'          => 'event_begin',
-                                'type'              => 'NUMERIC',
-                                'meta_value'        => strtotime("now"),
-                                'meta_compare'      => '>',
-                            ),
 							'meta_key' => 'event_begin',
 							'orderby' => 'meta_value_num',
 							'order' => 'DESC',
@@ -43,7 +35,7 @@
 						<?php if ( $custom_query->have_posts() ) : while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
 							<!-- article -->
 							<?php $event_start_date = get_post_meta( get_the_ID(), 'event_begin', true ); ?>
-                            <?php if ( (int)$event_start_date >= (int)strtotime("now") ) {
+                            <?php if ( (int)$event_start_date < (int)strtotime("now") ) {
                                 echo $event_start_date . ' ' . strtotime("now");
                             } ?>
 							<?php $event_end_date = get_post_meta( get_the_ID(), 'event_end', true ); ?>
