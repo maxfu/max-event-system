@@ -75,7 +75,7 @@
 							</article>
 							<!-- /article -->
 						<?php endif; ?>
-			            <?php get_template_part('pagination'); ?>
+			            <?php // get_template_part('pagination'); ?>
 					</div>
 				</div>
 			</div>
