@@ -143,7 +143,7 @@ add_action( 'init', 'mes_register_branch', 0 );
  */
 function mes_activation_deactivation() {
 	mes_register_event();
-    mes_register_branch()
+    mes_register_branch();
 	flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'mes_activation_deactivation' );
