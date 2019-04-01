@@ -451,6 +451,13 @@ function render_member_events( $attributes, $content = null ) {
     }
 }
 
+add_shortcode( 'up-coming-events', 'render_up_coming_events' );
+function render_up_coming_events( $attributes, $content = null ) {
+    $default_attributes = array( 'show_title' => false );
+    $attributes = shortcode_atts( $default_attributes, $attributes );
+    return get_template_html( 'up-coming-events', $attributes );
+}
+
 if ( ! function_exists( 'mes_register_branch' ) ) {
 
 // Register Custom Taxonomy
