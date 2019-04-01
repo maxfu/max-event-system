@@ -27,6 +27,14 @@
 						<?php $args = array(
 							'post_status' => 'publish',
 							'post_type' => 'event',
+                            'meta_query' => array(
+                                array(
+                                    'key'     => 'event_begin',
+                                    'value'   => (int)strtotime("now"),
+                                    'compare' => '>=',
+                                    'type'    => 'NUMERIC',
+                                ),
+                            ),
 							'meta_key' => 'event_begin',
 							'orderby' => 'meta_value_num',
 							'order' => 'DESC',
