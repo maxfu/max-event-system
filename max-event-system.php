@@ -33,10 +33,10 @@ add_action( 'init', 'mes_load_textdomain' );
 /**
  * Registering custom post type for events
  */
- if ( ! function_exists('mes_custom_post_type') ) {
+ if ( ! function_exists('mes_register_event') ) {
 
  // Register Custom Post Type
- function mes_custom_post_type() {
+ function mes_register_event() {
 
  	$labels = array(
  		'name'                  => _x( 'Events', 'Post Type General Name', 'max-event' ),
@@ -90,16 +90,60 @@ add_action( 'init', 'mes_load_textdomain' );
  	register_post_type( 'event', $args );
 
  }
- add_action( 'init', 'mes_custom_post_type', 0 );
+ add_action( 'init', 'mes_register_event', 0 );
 
  }
+
+if ( ! function_exists( 'mes_register_branch' ) ) {
+
+// Register Custom Taxonomy
+function mes_register_branch() {
+
+	$labels = array(
+		'name'                       => _x( 'Branches', 'Taxonomy General Name', 'max-event' ),
+		'singular_name'              => _x( 'Branch', 'Taxonomy Singular Name', 'max-event' ),
+		'menu_name'                  => __( 'Branch', 'max-event' ),
+		'all_items'                  => __( 'All Branches', 'max-event' ),
+		'parent_item'                => __( 'Parent Branch', 'max-event' ),
+		'parent_item_colon'          => __( 'Parent Branch:', 'max-event' ),
+		'new_item_name'              => __( 'New Branch Name', 'max-event' ),
+		'add_new_item'               => __( 'Add New Branch', 'max-event' ),
+		'edit_item'                  => __( 'Edit Branch', 'max-event' ),
+		'update_item'                => __( 'Update Branch', 'max-event' ),
+		'view_item'                  => __( 'View Branch', 'max-event' ),
+		'separate_items_with_commas' => __( 'Separate branches with commas', 'max-event' ),
+		'add_or_remove_items'        => __( 'Add or remove branches', 'max-event' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'max-event' ),
+		'popular_items'              => __( 'Popular Branches', 'max-event' ),
+		'search_items'               => __( 'Search Branches', 'max-event' ),
+		'not_found'                  => __( 'Not Found', 'max-event' ),
+		'no_terms'                   => __( 'No Branches', 'max-event' ),
+		'items_list'                 => __( 'Branches list', 'max-event' ),
+		'items_list_navigation'      => __( 'Branches list navigation', 'max-event' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'branch', array( 'event' ), $args );
+
+}
+add_action( 'init', 'mes_register_branch', 0 );
+
+}
 
 /**
  * Flushing rewrite rules on plugin activation/deactivation
  * for better working of permalink structure
  */
 function mes_activation_deactivation() {
-	mes_custom_post_type();
+	mes_register_event();
+    mes_register_branch()
 	flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'mes_activation_deactivation' );
@@ -458,45 +502,9 @@ function render_up_coming_events( $attributes, $content = null ) {
     return get_template_html( 'up-coming-events', $attributes );
 }
 
-if ( ! function_exists( 'mes_register_branch' ) ) {
-
-// Register Custom Taxonomy
-function mes_register_branch() {
-
-	$labels = array(
-		'name'                       => _x( 'Branches', 'Taxonomy General Name', 'max-event' ),
-		'singular_name'              => _x( 'Branch', 'Taxonomy Singular Name', 'max-event' ),
-		'menu_name'                  => __( 'Branch', 'max-event' ),
-		'all_items'                  => __( 'All Branches', 'max-event' ),
-		'parent_item'                => __( 'Parent Branch', 'max-event' ),
-		'parent_item_colon'          => __( 'Parent Branch:', 'max-event' ),
-		'new_item_name'              => __( 'New Branch Name', 'max-event' ),
-		'add_new_item'               => __( 'Add New Branch', 'max-event' ),
-		'edit_item'                  => __( 'Edit Branch', 'max-event' ),
-		'update_item'                => __( 'Update Branch', 'max-event' ),
-		'view_item'                  => __( 'View Branch', 'max-event' ),
-		'separate_items_with_commas' => __( 'Separate branches with commas', 'max-event' ),
-		'add_or_remove_items'        => __( 'Add or remove branches', 'max-event' ),
-		'choose_from_most_used'      => __( 'Choose from the most used', 'max-event' ),
-		'popular_items'              => __( 'Popular Branches', 'max-event' ),
-		'search_items'               => __( 'Search Branches', 'max-event' ),
-		'not_found'                  => __( 'Not Found', 'max-event' ),
-		'no_terms'                   => __( 'No Branches', 'max-event' ),
-		'items_list'                 => __( 'Branches list', 'max-event' ),
-		'items_list_navigation'      => __( 'Branches list navigation', 'max-event' ),
-	);
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => true,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
-	);
-	register_taxonomy( 'branch', array( 'event' ), $args );
-
-}
-add_action( 'init', 'mes_register_branch', 0 );
-
+add_shortcode( 'finished-events', 'render_finished_events' );
+function render_finished_events( $attributes, $content = null ) {
+    $default_attributes = array( 'show_title' => false );
+    $attributes = shortcode_atts( $default_attributes, $attributes );
+    return get_template_html( 'finished-events', $attributes );
 }
