@@ -31,7 +31,7 @@
                                 array(
                                     'key'     => 'event_begin',
                                     'value'   => (int)strtotime("now"),
-                                    'compare' => '>=',
+                                    'compare' => '<',
                                     'type'    => 'NUMERIC',
                                 ),
                             ),
