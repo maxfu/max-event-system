@@ -109,6 +109,7 @@
                 <?php echo 'Event Start Date: ' . date( 'd/m/Y g:i A', $event_start_date ); ?><br>
                 <?php echo 'Event End Date: ' . date( 'd/m/Y g:i A', $event_end_date ); ?><br>
                 <?php echo 'Event Venue: ' . $event_venue; ?><br>
+                <?php echo $event_rsvp_link; ?><br>
               </p>
   			</div>
   		  </div>
