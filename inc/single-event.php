@@ -110,9 +110,17 @@
                 <?php echo 'Event End Date: ' . date( 'd/m/Y g:i A', $event_end_date ); ?><br>
                 <?php echo 'Event Venue: ' . $event_venue; ?><br>
                 <?php echo $event_rsvp_link; ?><br>
-                <?php $lines_array=file_get_contents($event_rsvp_link); ?>
-                <?php // $lines_string=implode('',$lines_array); ?>
-                <?php echo htmlspecialchars($lines_array); ?>
+                <?php $handle=fopen($event_rsvp_link,"rb"); ?>
+                <?php $lines_string=""; ?>
+                <?php do{ ?>
+                    <?php $data=fread($handle,1024); ?>
+                    <?php if(strlen($data)==0) { ?>
+                        <?php break; ?>
+                    <?php } ?>
+                    <?php $lines_string.=$data; ?>
+                <?php }while(true); ?>
+                <?php fclose($handle); ?>
+                <?php echo $lines_string; ?>
               </p>
   			</div>
   		  </div>
