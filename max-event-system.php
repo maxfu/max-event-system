@@ -176,7 +176,8 @@ function mes_render_event_info_metabox( $post ) {
 	$event_start_date = get_post_meta( $post->ID, 'event_begin', true );
 	$event_end_date = get_post_meta( $post->ID, 'event_end', true );
 	$event_venue = get_post_meta( $post->ID, 'event-venue', true );
-  $event_rsvp = get_post_meta( $post->ID, 'event-rsvp', true );
+    $event_rsvp = get_post_meta( $post->ID, 'event-rsvp', true );
+    $event_rsvp_link = get_post_meta( $post->ID, 'event-rsvp-link', true );
 
 	//if there is previously saved value then retrieve it, else set it to the current time
 	$event_start_date = ! empty( $event_start_date ) ? $event_start_date : time();
@@ -197,14 +198,18 @@ function mes_render_event_info_metabox( $post ) {
 		<label for="mes-event-venue"><?php _e( 'Event Venue:', 'max-event' ); ?></label>
 		<input type="text" id="mes-event-venue" name="mes-event-venue" class="widefat" value="<?php echo $event_venue; ?>" placeholder="eg. Times Square">
 	</p>
-  <p>
+    <p>
 		<label for="mes-event-rsvp"><?php _e( 'RSVP Availability:', 'max-event' ); ?></label>
-    <select name="mes-event-rsvp" id="mes-event-rsvp">
+        <select name="mes-event-rsvp" id="mes-event-rsvp">
 			<option <?php echo ( $event_rsvp === 'All' ) ? 'selected' : '' ?>>All</option>
 			<option <?php echo ( $event_rsvp === 'Member' ) ? 'selected' : '' ?>>Member</option>
 			<option <?php echo ( $event_rsvp === 'No' ) ? 'selected' : '' ?>>No</option>
 		</select>
 	</p>
+    <p>
+        <label for="mes-event-rsvp-link"><?php _e( 'RSVP Link', 'max-event' ); ?></label><br>
+        <input type="text" name="mes-event-rsvp-link" id="mes-event-rsvp-link" value="<?php echo $event_rsvp_link; ?>">
+        </p>
 	<?php
 }
 
@@ -332,19 +337,23 @@ function mes_save_event_info( $post_id ) {
 	if ( isset( $_POST['mes-event-venue'] ) ) {
 		update_post_meta( $post_id, 'event-venue', sanitize_text_field( $_POST['mes-event-venue'] ) );
 	}
-
-  if ( isset( $_POST['mes-event-rsvp'] ) ) {
-    update_post_meta( $post_id, 'event-rsvp', esc_attr( $_POST['mes-event-rsvp'] ) );
-  }
-
-  if ( $_POST['post_type'] == "event") {
-    // Store data in post meta table if present in post data
-    if ( isset($_POST['event-details'] ) && $_POST['event-details'] != '' ) {
-      update_post_meta( $post_id, 'event-details', $_POST['event-details'] );
+    
+    if ( isset( $_POST['mes-event-rsvp'] ) ) {
+        update_post_meta( $post_id, 'event-rsvp', esc_attr( $_POST['mes-event-rsvp'] ) );
     }
-  } else {
-    delete_post_meta( $post_id, 'event-details' );
-  }
+    
+    if ( $_POST['post_type'] == "event") {
+    // Store data in post meta table if present in post data
+        if ( isset($_POST['event-details'] ) && $_POST['event-details'] != '' ) {
+            update_post_meta( $post_id, 'event-details', $_POST['event-details'] );
+        }
+    } else {
+        delete_post_meta( $post_id, 'event-details' );
+    }
+
+    if ( isset( $_POST['mes-event-rsvp-link'] ) ) {
+        update_post_meta( $post_id, 'event-rsvp-link', esc_attr( $_POST['mes-event-rsvp-link'] ) );
+    }
 }
 add_action( 'save_post', 'mes_save_event_info' );
 
@@ -359,7 +368,7 @@ function mes_custom_columns_head( $defaults ) {
 	$defaults['event_start_date'] = __( 'Start Date', 'max-event' );
 	$defaults['event_end_date'] = __( 'End Date', 'max-event' );
 	$defaults['event_venue'] = __( 'Venue', 'max-event' );
-  $defaults['event_rsvp'] = __( 'RSVP', 'max-event' );
+    $defaults['event_rsvp'] = __( 'RSVP', 'max-event' );
 
 	return $defaults;
 }
