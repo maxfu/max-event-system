@@ -110,17 +110,12 @@
                 <?php echo 'Event End Date: ' . date( 'd/m/Y g:i A', $event_end_date ); ?><br>
                 <?php echo 'Event Venue: ' . $event_venue; ?><br>
                 <?php echo $event_rsvp_link; ?><br>
-                <?php $handle=fopen($event_rsvp_link,"rb"); ?>
-                <?php $lines_string=""; ?>
-                <?php do{ ?>
-                    <?php $data=fread($handle,1024); ?>
-                    <?php if(strlen($data)==0) { ?>
-                        <?php break; ?>
-                    <?php } ?>
-                    <?php $lines_string.=$data; ?>
-                <?php }while(true); ?>
-                <?php fclose($handle); ?>
-                <?php echo $lines_string; ?>
+                <?php
+                    $snoopy = new Snoopy;
+                    $snoopy->fetch($event_rsvp_link);
+                    $lines_string = $snoopy->results;
+                    echo $lines_string;
+                ?>
               </p>
   			</div>
   		  </div>
