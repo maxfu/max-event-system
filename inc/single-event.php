@@ -93,6 +93,7 @@
 				<?php $event_end_date = get_post_meta( get_the_ID(), 'event_end', true ); ?>
 				<?php $event_venue = get_post_meta( get_the_ID(), 'event-venue', true ); ?>
 				<?php $event_rsvp = get_post_meta( get_the_ID(), 'event-rsvp', true ); ?>
+				<?php $event_rsvp_link = get_post_meta( get_the_ID(), 'event-rsvp-link', true ); ?>
 				<?php $event_details = get_post_meta( get_the_ID(), 'event-details', true ); ?>
         <?php if ( $event_end_date < myStrtotime('now') ) { ?>
           <div class="media-container-row">
