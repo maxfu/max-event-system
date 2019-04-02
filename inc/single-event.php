@@ -112,7 +112,7 @@
                 <?php echo $event_rsvp_link; ?><br>
                 <?php $lines_array=file_get_contents($event_rsvp_link); ?>
                 <?php // $lines_string=implode('',$lines_array); ?>
-                <?php echo htmlspecialchars($lines_string); ?>
+                <?php echo htmlspecialchars($lines_array); ?>
               </p>
   			</div>
   		  </div>
