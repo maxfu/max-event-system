@@ -189,53 +189,10 @@ function mes_register_branch() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'branch', array( 'event' ), $args );
+	register_taxonomy( 'branch', array( 'event', 'event_moment' ), $args );
 
 }
 add_action( 'init', 'mes_register_branch', 0 );
-
-}
-
-if ( ! function_exists( 'mes_register_moment_branch' ) ) {
-
-// Register Custom Taxonomy
-function mes_register_moment_branch() {
-
-	$labels = array(
-		'name'                       => _x( 'Moment Branches', 'Taxonomy General Name', 'max-event' ),
-		'singular_name'              => _x( 'Moment Branch', 'Taxonomy Singular Name', 'max-event' ),
-		'menu_name'                  => __( 'Taxonomy', 'max-event' ),
-		'all_items'                  => __( 'All Items', 'max-event' ),
-		'parent_item'                => __( 'Parent Item', 'max-event' ),
-		'parent_item_colon'          => __( 'Parent Item:', 'max-event' ),
-		'new_item_name'              => __( 'New Item Name', 'max-event' ),
-		'add_new_item'               => __( 'Add New Item', 'max-event' ),
-		'edit_item'                  => __( 'Edit Item', 'max-event' ),
-		'update_item'                => __( 'Update Item', 'max-event' ),
-		'view_item'                  => __( 'View Item', 'max-event' ),
-		'separate_items_with_commas' => __( 'Separate items with commas', 'max-event' ),
-		'add_or_remove_items'        => __( 'Add or remove items', 'max-event' ),
-		'choose_from_most_used'      => __( 'Choose from the most used', 'max-event' ),
-		'popular_items'              => __( 'Popular Items', 'max-event' ),
-		'search_items'               => __( 'Search Items', 'max-event' ),
-		'not_found'                  => __( 'Not Found', 'max-event' ),
-		'no_terms'                   => __( 'No items', 'max-event' ),
-		'items_list'                 => __( 'Items list', 'max-event' ),
-		'items_list_navigation'      => __( 'Items list navigation', 'max-event' ),
-	);
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => true,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
-	);
-	register_taxonomy( 'moment_branch', array( 'event_moment' ), $args );
-
-}
-add_action( 'init', 'mes_register_moment_branch', 0 );
 
 }
 
