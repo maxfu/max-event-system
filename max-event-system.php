@@ -94,6 +94,66 @@ add_action( 'init', 'mes_load_textdomain' );
 
  }
 
+if ( ! function_exists('mes_register_event_moment') ) {
+
+// Register Custom Post Type
+function mes_register_event_moment() {
+
+	$labels = array(
+		'name'                  => _x( 'Event Moments', 'Post Type General Name', 'max-event' ),
+		'singular_name'         => _x( 'Event Moment', 'Post Type Singular Name', 'max-event' ),
+		'menu_name'             => __( 'Event Moments', 'max-event' ),
+		'name_admin_bar'        => __( 'Event Moment', 'max-event' ),
+		'archives'              => __( 'Event Moment Archives', 'max-event' ),
+		'attributes'            => __( 'Event Moment Attributes', 'max-event' ),
+		'parent_item_colon'     => __( 'Parent Event Moment:', 'max-event' ),
+		'all_items'             => __( 'All Event Moments', 'max-event' ),
+		'add_new_item'          => __( 'Add New Event Moment', 'max-event' ),
+		'add_new'               => __( 'Add New', 'max-event' ),
+		'new_item'              => __( 'New Event Moment', 'max-event' ),
+		'edit_item'             => __( 'Edit Event Moment', 'max-event' ),
+		'update_item'           => __( 'Update Event Moment', 'max-event' ),
+		'view_item'             => __( 'View Event Moment', 'max-event' ),
+		'view_items'            => __( 'View Event Moments', 'max-event' ),
+		'search_items'          => __( 'Search Event Moment', 'max-event' ),
+		'not_found'             => __( 'Not found', 'max-event' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'max-event' ),
+		'featured_image'        => __( 'Featured Image', 'max-event' ),
+		'set_featured_image'    => __( 'Set featured image', 'max-event' ),
+		'remove_featured_image' => __( 'Remove featured image', 'max-event' ),
+		'use_featured_image'    => __( 'Use as featured image', 'max-event' ),
+		'insert_into_item'      => __( 'Insert into Event Moment', 'max-event' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this Event Moment', 'max-event' ),
+		'items_list'            => __( 'Event Moments list', 'max-event' ),
+		'items_list_navigation' => __( 'Event Moments list navigation', 'max-event' ),
+		'filter_items_list'     => __( 'Filter Event Moments list', 'max-event' ),
+	);
+	$args = array(
+		'label'                 => __( 'Event Moment', 'max-event' ),
+		'description'           => __( 'Post Type Description', 'max-event' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+ 		'menu_icon'             => IMAGES . 'event.svg',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'post',
+	);
+	register_post_type( 'event_moment', $args );
+
+}
+add_action( 'init', 'mes_register_event_moment', 0 );
+
+}
+
 if ( ! function_exists( 'mes_register_branch' ) ) {
 
 // Register Custom Taxonomy
@@ -134,6 +194,49 @@ function mes_register_branch() {
 
 }
 add_action( 'init', 'mes_register_branch', 0 );
+
+}
+
+if ( ! function_exists( 'mes_register_moment_branch' ) ) {
+
+// Register Custom Taxonomy
+function mes_register_moment_branch() {
+
+	$labels = array(
+		'name'                       => _x( 'Moment Branches', 'Taxonomy General Name', 'max-event' ),
+		'singular_name'              => _x( 'Moment Branch', 'Taxonomy Singular Name', 'max-event' ),
+		'menu_name'                  => __( 'Taxonomy', 'max-event' ),
+		'all_items'                  => __( 'All Items', 'max-event' ),
+		'parent_item'                => __( 'Parent Item', 'max-event' ),
+		'parent_item_colon'          => __( 'Parent Item:', 'max-event' ),
+		'new_item_name'              => __( 'New Item Name', 'max-event' ),
+		'add_new_item'               => __( 'Add New Item', 'max-event' ),
+		'edit_item'                  => __( 'Edit Item', 'max-event' ),
+		'update_item'                => __( 'Update Item', 'max-event' ),
+		'view_item'                  => __( 'View Item', 'max-event' ),
+		'separate_items_with_commas' => __( 'Separate items with commas', 'max-event' ),
+		'add_or_remove_items'        => __( 'Add or remove items', 'max-event' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'max-event' ),
+		'popular_items'              => __( 'Popular Items', 'max-event' ),
+		'search_items'               => __( 'Search Items', 'max-event' ),
+		'not_found'                  => __( 'Not Found', 'max-event' ),
+		'no_terms'                   => __( 'No items', 'max-event' ),
+		'items_list'                 => __( 'Items list', 'max-event' ),
+		'items_list_navigation'      => __( 'Items list navigation', 'max-event' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'moment_branch', array( 'event_moment' ), $args );
+
+}
+add_action( 'init', 'mes_register_moment_branch', 0 );
 
 }
 
