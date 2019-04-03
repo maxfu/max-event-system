@@ -31,11 +31,6 @@
 				<?php $event_rsvp = get_post_meta( get_the_ID(), 'event-rsvp', true ); ?>
 				<?php $event_rsvp_link = get_post_meta( get_the_ID(), 'event-rsvp-link', true ); ?>
 				<?php $event_details = get_post_meta( get_the_ID(), 'event-details', true ); ?>
-        <?php if ( $event_end_date < myStrtotime('now') ) { ?>
-          <div class="media-container-row">
-            <div class="mbr-text col-12 mbr-fonts-style display-7"><?php the_content(); ?></div>
-          </div>
-        <?php } else { ?>
           <div class="media-container-row">
   			<div class="mbr-text col-12 mbr-fonts-style display-7">
               <?php the_content(); ?>
@@ -43,18 +38,13 @@
                 <?php echo 'Event Start Date: ' . date( 'd/m/Y g:i A', $event_start_date ); ?><br>
                 <?php echo 'Event End Date: ' . date( 'd/m/Y g:i A', $event_end_date ); ?><br>
                 <?php echo 'Event Venue: ' . $event_venue; ?><br>
+  				<?php if ( $event_rsvp == 'Yes' ) { ?>
+                  <?php echo $event_rsvp_link; ?><br>
+  				<?php } ?>
               </p>
   			</div>
   		  </div>
-  				<?php if ( $event_rsvp == 'Yes' ) { ?>
-  					<div class="media-container-row">
-  						<div class="mbr-text col-4 col-md-4 mbr-fonts-style display-7">
-                          <?php echo $event_rsvp_link; ?><br>
-  						</div>
-  					</div>
-  				<?php } ?>
-            <?php } ?>
-			</div>
+		</div>
 		</section>
 	</main>
 <?php endwhile; ?>

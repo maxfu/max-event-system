@@ -19,9 +19,6 @@ if ( $custom_query->have_posts() ) {
     while ( $custom_query->have_posts() ) {
         $custom_query->the_post();
         $event_start_date = get_post_meta( get_the_ID(), 'event_begin', true );
-        if ( (int)$event_start_date >= (int)strtotime("now") ) {
-            echo $event_start_date . ' ' . strtotime("now");
-        }
         $event_end_date = get_post_meta( get_the_ID(), 'event_end', true );
         $event_venue = get_post_meta( get_the_ID(), 'event-venue', true );
         $event_rsvp = get_post_meta( get_the_ID(), 'event-rsvp', true );
