@@ -30,8 +30,6 @@ function mes_load_textdomain() {
 
 add_action( 'init', 'mes_load_textdomain' );
 
-require('inc/Snoopy.class.php');
-
 /**
  * Registering custom post type for events
  */
