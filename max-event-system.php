@@ -202,6 +202,7 @@ add_action( 'init', 'mes_register_branch', 0 );
  */
 function mes_activation_deactivation() {
 	mes_register_event();
+    mes_register_event_moment();
     mes_register_branch();
 	flush_rewrite_rules();
 }
@@ -216,8 +217,16 @@ function mes_add_event_info_metabox() {
 		__( 'Event Info', 'max-event' ),
 		'mes_render_event_info_metabox',
 		'event',
-		'side',
-		'core'
+		'normal',
+		'high'
+	);
+	add_meta_box(
+		'mes-event-info-metabox',
+		__( 'Event Info', 'max-event' ),
+		'mes_render_event_info_metabox',
+		'event_moment',
+		'normal',
+		'high'
 	);
 }
 add_action( 'add_meta_boxes', 'mes_add_event_info_metabox' );
@@ -260,8 +269,7 @@ function mes_render_event_info_metabox( $post ) {
     <p>
 		<label for="mes-event-rsvp"><?php _e( 'RSVP Availability:', 'max-event' ); ?></label>
         <select name="mes-event-rsvp" id="mes-event-rsvp">
-			<option <?php echo ( $event_rsvp === 'All' ) ? 'selected' : '' ?>>All</option>
-			<option <?php echo ( $event_rsvp === 'Member' ) ? 'selected' : '' ?>>Member</option>
+			<option <?php echo ( $event_rsvp === 'Yes' ) ? 'selected' : '' ?>>Yes</option>
 			<option <?php echo ( $event_rsvp === 'No' ) ? 'selected' : '' ?>>No</option>
 		</select>
 	</p>
@@ -330,7 +338,7 @@ function mes_widget_style() {
 		);
 	}
 }
-add_action( 'wp_enqueue_scripts', 'mes_widget_style' );
+// add_action( 'wp_enqueue_scripts', 'mes_widget_style' );
 
 if (!function_exists('myStrtotime')) {
   function myStrtotime($date_string) {
@@ -399,15 +407,6 @@ function mes_save_event_info( $post_id ) {
     
     if ( isset( $_POST['mes-event-rsvp'] ) ) {
         update_post_meta( $post_id, 'event-rsvp', esc_attr( $_POST['mes-event-rsvp'] ) );
-    }
-    
-    if ( $_POST['post_type'] == "event") {
-    // Store data in post meta table if present in post data
-        if ( isset($_POST['event-details'] ) && $_POST['event-details'] != '' ) {
-            update_post_meta( $post_id, 'event-details', $_POST['event-details'] );
-        }
-    } else {
-        delete_post_meta( $post_id, 'event-details' );
     }
 
     if ( isset( $_POST['mes-event-rsvp-link'] ) ) {
@@ -489,37 +488,6 @@ function get_event_archive_template( $archive_template ) {
      return $archive_template;
 }
 add_filter( 'archive_template', 'get_event_archive_template' ) ;
-
-// Create Missionary Meta Box
-function mes_add_event_details_metabox() {
-  add_meta_box(
-    'mes-event-details-metabox',
-    __( 'Event Details', 'max-event' ),
-    'display_event_details_meta_box',
-    'event',
-    'normal',
-    'high'
-  );
-}
-add_action( 'add_meta_boxes', 'mes_add_event_details_metabox' );
-
-// Put Fields In Missionary Meta Box
-function display_event_details_meta_box( $post ) {
-  $event_details = get_post_meta($post->ID, 'event-details', true);
-?>
-<table style=" width: 100%;">
-  <tr>
-    <td><?php wp_editor($event_details, 'event-details', array(
-            'wpautop'       =>      true,
-            'media_buttons' =>      true,
-            'textarea_name' =>      'event-details'
-            ));
-        ?>
-      </td>
-    </tr>
-</table>
-<?php
-}
 
 function get_template_html( $template_name, $attributes = null ) {
     if ( ! $attributes ) {
