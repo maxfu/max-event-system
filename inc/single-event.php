@@ -64,7 +64,7 @@
 			<div class="container">
 				<div class="media-container-row">
 					<div class="mbr-text col-12 col-md-8 mbr-fonts-style display-7">
-						<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
+						<h2><?php _e( 'Sorry, nothing to display.', 'max-event' ); ?></h2>
 					</div>
 				</div>
 			</div>
