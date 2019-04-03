@@ -280,66 +280,6 @@ function mes_render_event_info_metabox( $post ) {
 	<?php
 }
 
-/**
- * Enqueueing scripts and styles in the admin
- * @param  int $hook Current page hook
- */
-function mes_admin_script_style( $hook ) {
-	global $post_type;
-
-	if ( ( 'post.php' == $hook || 'post-new.php' == $hook ) && ( 'event' == $post_type ) ) {
-    wp_enqueue_script(
-			'jquery-ui-datetimepicker',
-			'https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js',
-			array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-slider' ),
-			'1.6.3',
-			true
-		);
-
-    wp_enqueue_script(
-			'upcoming-events',
-			SCRIPTS . 'script.js',
-			array( 'jquery', 'jquery-ui-datepicker' , 'jquery-ui-datetimepicker' ),
-			'1.1',
-			true
-		);
-
-    wp_enqueue_style(
-			'jquery-ui-calendar',
-			STYLES . 'jquery-ui-1.10.4.custom.min.css',
-			false,
-			'1.10.4',
-			'all'
-		);
-
-    wp_enqueue_style(
-			'jquery-ui-datetimepicker-css',
-			'https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css',
-			false,
-			'1.6.3',
-			'all'
-		);
-	}
-}
-// add_action( 'admin_enqueue_scripts', 'mes_admin_script_style' );
-
-
-/**
- * Enqueueing styles for the front-end widget
- */
-function mes_widget_style() {
-	if ( is_active_widget( '', '', 'mes_upcoming_events', true ) ) {
-		wp_enqueue_style(
-			'upcoming-events',
-			STYLES . 'max-event-sys.css',
-			false,
-			'1.0',
-			'all'
-		);
-	}
-}
-// add_action( 'wp_enqueue_scripts', 'mes_widget_style' );
-
 if (!function_exists('myStrtotime')) {
   function myStrtotime($date_string) {
     $date_string = str_replace('.', '', $date_string); // to remove dots in short names of months, such as in 'janv.', 'févr.', 'avr.', ...
