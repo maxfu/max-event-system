@@ -25,10 +25,6 @@ while ( $custom_loop->have_posts() ) : $custom_loop->the_post();
     </div>
     <div class="align-left aside-content">
         <h2 class="mbr-title mbr-fonts-style display-3"><a href="<?php echo esc_url(get_permalink()); ?>"><?php the_title(); ?></a></h2>
-        <div class="mbr-section-text">
-            <p class="mbr-text mt-3 mbr-light mbr-fonts-style display-5 fixed-height"><?php ccca_the_excerpt('ccca_excerpt'); ?> </p>
-            <p class="mbr-text mbr-light mbr-fonts-style display-5 view-more">...<a href="<?php echo esc_url(get_permalink()); ?>">了解更多</a></p>
-        </div>
     </div>
 </div>
 <?php
@@ -65,10 +61,6 @@ while ( $custom_loop->have_posts() ) : $custom_loop->the_post();
     </div>
     <div class="align-left aside-content">
         <h2 class="mbr-title mbr-fonts-style display-3"><a href="<?php echo esc_url(get_permalink()); ?>"><?php the_title(); ?></a></h2>
-        <div class="mbr-section-text">
-            <p class="mbr-text mt-3 mbr-light mbr-fonts-style display-5 fixed-height"><?php ccca_the_excerpt('ccca_excerpt'); ?> </p>
-            <p class="mbr-text mbr-light mbr-fonts-style display-5 view-more">...<a href="<?php echo esc_url(get_permalink()); ?>">了解更多</a></p>
-        </div>
     </div>
 </div>
 <?php
