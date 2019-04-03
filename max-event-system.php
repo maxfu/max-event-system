@@ -72,7 +72,6 @@ add_action( 'init', 'mes_load_textdomain' );
  		'description'           => __( 'Post Type Description', 'max-event' ),
  		'labels'                => $labels,
  		'supports'              => array( 'title', 'editor', 'thumbnail' ),
-// 		'taxonomies'            => array( 'category' ),
  		'hierarchical'          => false,
  		'public'                => true,
  		'show_ui'               => true,
