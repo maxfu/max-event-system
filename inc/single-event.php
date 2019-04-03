@@ -32,7 +32,7 @@
 				<?php $event_rsvp_link = get_post_meta( get_the_ID(), 'event-rsvp-link', true ); ?>
 				<?php $event_details = get_post_meta( get_the_ID(), 'event-details', true ); ?>
           <div class="media-container-row">
-  			<div class="mbr-text col-12 mbr-fonts-style display-7">
+  			<div class="mbr-text col-9 col-md-9 mbr-fonts-style display-7">
               <?php the_content(); ?>
   			  <p>
                 <?php echo 'Event Start Date: ' . date( 'd/m/Y g:i A', $event_start_date ); ?><br>
@@ -53,7 +53,7 @@
 		<section class="mbr-section article content1 cid-qSSbnPkOyI">
 			<div class="container">
 				<div class="media-container-row">
-					<div class="mbr-text col-12 col-md-8 mbr-fonts-style display-7">
+					<div class="mbr-text col-9 col-md-9 mbr-fonts-style display-7">
 						<h2><?php _e( 'Sorry, nothing to display.', 'max-event' ); ?></h2>
 					</div>
 				</div>
