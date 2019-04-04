@@ -69,8 +69,9 @@ msgid "This event is open for RSVP, please click the following to register:"
 msgstr "This event is open for RSVP, please click the following to register:"
 
 #: 
-msgid "An account exists with this email address."
-msgstr ""
+#, fuzzy
+msgid " RSVP link"
+msgstr " RSVP link"
 
 #: 
 msgid "You need to enter your email address to continue."

@@ -68,8 +68,8 @@ msgid "This event is open for RSVP, please click the following to register:"
 msgstr "本活动开放报名，请点击下面链接进行报名："
 
 #: 
-msgid "An account exists with this email address."
-msgstr ""
+msgid " RSVP link"
+msgstr "报名链接"
 
 #: 
 msgid "You need to enter your email address to continue."
