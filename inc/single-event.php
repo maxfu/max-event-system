@@ -43,7 +43,7 @@
   				<?php if ( $event_rsvp == 'Yes' ) { ?>
                     <p>
                         <?php _e( 'This event is open for RSVP, please click the following to register:', 'max-event' ); ?><br>
-                        <a href="$event_rsvp_link" title="<?php the_title(); ?>"><?php the_title(); ?><?php _e( ' RSVP link', 'max-event' ); ?></a><br>
+                        <a href="<?php echo $event_rsvp_link; ?>" title="<?php the_title(); ?>"><?php the_title(); ?><?php _e( ' RSVP link', 'max-event' ); ?></a><br>
                     </p>
   				<?php } ?>
   			</div>
