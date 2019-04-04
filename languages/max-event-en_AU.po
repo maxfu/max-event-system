@@ -49,20 +49,24 @@ msgid "Event Details as following:"
 msgstr "Event Details as following:"
 
 #: 
-msgid "You need to enter a password to login."
-msgstr ""
+#, fuzzy
+msgid "Start Date: "
+msgstr "Start Date: "
 
 #: 
-msgid "We don't have any users with that email address. Maybe you used a different one when signing up?"
-msgstr ""
+#, fuzzy
+msgid "End Date: "
+msgstr "End Date: "
 
 #: 
-msgid "The password you entered wasn't quite right. <a href='%s'>Did you forget your password</a>?"
-msgstr ""
+#, fuzzy
+msgid "Venue: "
+msgstr "Venue: "
 
 #: 
-msgid "The email address you entered is not valid."
-msgstr ""
+#, fuzzy
+msgid "This event is open for RSVP, please click the following to register:"
+msgstr "This event is open for RSVP, please click the following to register:"
 
 #: 
 msgid "An account exists with this email address."
