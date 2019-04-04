@@ -39,37 +39,37 @@ add_action( 'init', 'mes_load_textdomain' );
  function mes_register_event() {
 
  	$labels = array(
- 		'name'                  => _x( 'Events', 'Post Type General Name', 'max-event' ),
- 		'singular_name'         => _x( 'Event', 'Post Type Singular Name', 'max-event' ),
- 		'menu_name'             => __( 'Events', 'max-event' ),
- 		'name_admin_bar'        => __( 'Events', 'max-event' ),
- 		'archives'              => __( 'Event Archives', 'max-event' ),
- 		'attributes'            => __( 'Event Attributes', 'max-event' ),
- 		'parent_item_colon'     => __( 'Parent Event:', 'max-event' ),
- 		'all_items'             => __( 'All Events', 'max-event' ),
- 		'add_new_item'          => __( 'Add New Event', 'max-event' ),
+ 		'name'                  => _x( 'Events RSVP', 'Post Type General Name', 'max-event' ),
+ 		'singular_name'         => _x( 'Event RSVP', 'Post Type Singular Name', 'max-event' ),
+ 		'menu_name'             => __( 'Events RSVP', 'max-event' ),
+ 		'name_admin_bar'        => __( 'Events RSVP', 'max-event' ),
+ 		'archives'              => __( 'Event RSVP Archives', 'max-event' ),
+ 		'attributes'            => __( 'Event RSVP Attributes', 'max-event' ),
+ 		'parent_item_colon'     => __( 'Parent Event RSVP:', 'max-event' ),
+ 		'all_items'             => __( 'All Events RSVP', 'max-event' ),
+ 		'add_new_item'          => __( 'Add New Event RSVP', 'max-event' ),
  		'add_new'               => __( 'Add New', 'max-event' ),
- 		'new_item'              => __( 'New Event', 'max-event' ),
- 		'edit_item'             => __( 'Edit Event', 'max-event' ),
- 		'update_item'           => __( 'Update Event', 'max-event' ),
- 		'view_item'             => __( 'View Event', 'max-event' ),
- 		'view_items'            => __( 'View Events', 'max-event' ),
- 		'search_items'          => __( 'Search Event', 'max-event' ),
+ 		'new_item'              => __( 'New Event RSVP', 'max-event' ),
+ 		'edit_item'             => __( 'Edit Event RSVP', 'max-event' ),
+ 		'update_item'           => __( 'Update Event RSVP', 'max-event' ),
+ 		'view_item'             => __( 'View Event RSVP', 'max-event' ),
+ 		'view_items'            => __( 'View Events RSVP', 'max-event' ),
+ 		'search_items'          => __( 'Search Event RSVP', 'max-event' ),
  		'not_found'             => __( 'Not found', 'max-event' ),
  		'not_found_in_trash'    => __( 'Not found in Trash', 'max-event' ),
  		'featured_image'        => __( 'Featured Image', 'max-event' ),
  		'set_featured_image'    => __( 'Set featured image', 'max-event' ),
  		'remove_featured_image' => __( 'Remove featured image', 'max-event' ),
  		'use_featured_image'    => __( 'Use as featured image', 'max-event' ),
- 		'insert_into_item'      => __( 'Insert into event', 'max-event' ),
- 		'uploaded_to_this_item' => __( 'Uploaded to this event', 'max-event' ),
- 		'items_list'            => __( 'Events list', 'max-event' ),
- 		'items_list_navigation' => __( 'Events list navigation', 'max-event' ),
- 		'filter_items_list'     => __( 'Filter events list', 'max-event' ),
+ 		'insert_into_item'      => __( 'Insert into Event RSVP', 'max-event' ),
+ 		'uploaded_to_this_item' => __( 'Uploaded to this Event RSVP', 'max-event' ),
+ 		'items_list'            => __( 'Events RSVP list', 'max-event' ),
+ 		'items_list_navigation' => __( 'Events RSVP list navigation', 'max-event' ),
+ 		'filter_items_list'     => __( 'Filter Events RSVP list', 'max-event' ),
  	);
  	$args = array(
- 		'label'                 => __( 'Event', 'max-event' ),
- 		'description'           => __( 'Post Type Description', 'max-event' ),
+ 		'label'                 => __( 'Event RSVP', 'max-event' ),
+ 		'description'           => __( 'Event RSVP', 'max-event' ),
  		'labels'                => $labels,
  		'supports'              => array( 'title', 'editor', 'thumbnail' ),
  		'hierarchical'          => false,
@@ -409,23 +409,30 @@ include( 'inc/widget-max-event-sys.php' );
 /**
  * Adding Template
  */
- function get_event_template($single_template) {
-      global $post;
-
-      if ($post->post_type == 'event') {
-           $single_template = dirname( __FILE__ ) . '/inc/single-event.php';
-      }
-      return $single_template;
+function get_event_template( $single_template ) {
+    global $post;
+    if ($post->post_type == 'event') {
+        $single_template = dirname( __FILE__ ) . '/inc/single-event.php';
+    }
+    return $single_template;
  }
- add_filter( 'single_template', 'get_event_template' );
+add_filter( 'single_template', 'get_event_template' );
+
+function get_event_moment_template( $single_template ) {
+    global $post;
+    if ($post->post_type == 'event_moment') {
+        $single_template = dirname( __FILE__ ) . '/inc/single-event_moment.php';
+    }
+    return $single_template;
+ }
+add_filter( 'single_template', 'get_event_moment_template' );
 
 function get_event_archive_template( $archive_template ) {
-     global $post;
-
-     if ( is_post_type_archive ( 'event' ) ) {
-          $archive_template = dirname( __FILE__ ) . '/inc/archive-event.php';
-     }
-     return $archive_template;
+    global $post;
+    if ( is_post_type_archive ( 'event' ) ) {
+        $archive_template = dirname( __FILE__ ) . '/inc/archive-event.php';
+    }
+    return $archive_template;
 }
 add_filter( 'archive_template', 'get_event_archive_template' ) ;
 
