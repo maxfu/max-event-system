@@ -471,11 +471,7 @@ function render_member_events( $attributes, $content = null ) {
     $default_attributes = array( 'show_title' => false );
     $attributes = shortcode_atts( $default_attributes, $attributes );
 
-    if ( is_user_logged_in() ) {
-        return get_template_html( 'member-events', $attributes );
-    } else {
-        return __( 'You are not signed in yet.', 'max-event' );
-    }
+    return get_template_html( 'member-events', $attributes );
 }
 
 add_shortcode( 'up-coming-events', 'render_up_coming_events' );
@@ -491,3 +487,17 @@ function render_finished_events( $attributes, $content = null ) {
     $attributes = shortcode_atts( $default_attributes, $attributes );
     return get_template_html( 'finished-events', $attributes );
 }
+
+add_shortcode( 'member-info', 'render_member_info' );
+function render_member_info( $attributes, $content = null ) {
+    // Parse shortcode attributes
+    $default_attributes = array( 'show_title' => false );
+    $attributes = shortcode_atts( $default_attributes, $attributes );
+
+    if ( is_user_logged_in() ) {
+        return get_template_html( 'member-info', $attributes );
+    } else {
+        return __( 'You are not signed in yet.', 'max-event' );
+    }
+}
+
