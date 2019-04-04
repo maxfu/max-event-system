@@ -35,11 +35,13 @@
   			<div class="mbr-text col-9 col-md-9 mbr-fonts-style display-7">
               <?php the_content(); ?>
   			  <p>
-                <?php echo 'Event Start Date: ' . date( 'd/m/Y g:i A', $event_start_date ); ?><br>
-                <?php echo 'Event End Date: ' . date( 'd/m/Y g:i A', $event_end_date ); ?><br>
-                <?php echo 'Event Venue: ' . $event_venue; ?><br>
+                <?php echo __( 'Event Details as following:', 'max-event' ) . date( 'd/m/Y g:i A', $event_start_date ); ?><br>
+                <?php echo __( 'Event Start Date: ', 'max-event' ) . date( 'd/m/Y g:i A', $event_start_date ); ?><br>
+                <?php echo __( 'Event End Date: ', 'max-event' ) . date( 'd/m/Y g:i A', $event_end_date ); ?><br>
+                <?php echo __( 'Event Venue: ', 'max-event' ) . $event_venue; ?><br>
   				<?php if ( $event_rsvp == 'Yes' ) { ?>
-                  <?php echo $event_rsvp_link; ?><br>
+                    <?php _e( 'This event is open for RSVP, please click the following to register:', 'max-event' ); ?><br>
+                    <a href="$event_rsvp_link" title="<?php the_title(); ?>"><?php _e( 'Please click this link to ', 'max-event' ); ?></a><br>
   				<?php } ?>
               </p>
   			</div>
