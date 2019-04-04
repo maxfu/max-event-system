@@ -25,15 +25,18 @@ msgid "Hello!"
 msgstr ""
 
 #: 
-msgid "You asked us to reset your password for your account using the email address %s."
+#, fuzzy
+msgid "Event Archives"
 msgstr "活动归档"
 
 #: 
-msgid "If this was a mistake, or you didn't ask for a password reset, just ignore this email and nothing will happen."
+#, fuzzy
+msgid "Event Attributes"
 msgstr "Event Attributes"
 
 #: 
-msgid "To reset your password, visit the following address:"
+#, fuzzy
+msgid "Exciting events coming soon!"
 msgstr "精彩活动即将呈现！"
 
 #: 
@@ -41,8 +44,9 @@ msgid "Thanks!"
 msgstr ""
 
 #: 
-msgid "You do have an email address, right?"
-msgstr ""
+#, fuzzy
+msgid "Event Details as following:"
+msgstr "活动详情如下："
 
 #: 
 msgid "You need to enter a password to login."
