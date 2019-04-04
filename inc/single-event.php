@@ -33,17 +33,22 @@
 				<?php $event_details = get_post_meta( get_the_ID(), 'event-details', true ); ?>
           <div class="media-container-row">
   			<div class="mbr-text col-9 col-md-9 mbr-fonts-style display-7">
-              <?php the_content(); ?>
   			  <p>
                 <?php echo __( 'Event Details as following:', 'max-event' ) . date( 'd/m/Y g:i A', $event_start_date ); ?><br>
                 <?php echo __( 'Event Start Date: ', 'max-event' ) . date( 'd/m/Y g:i A', $event_start_date ); ?><br>
                 <?php echo __( 'Event End Date: ', 'max-event' ) . date( 'd/m/Y g:i A', $event_end_date ); ?><br>
                 <?php echo __( 'Event Venue: ', 'max-event' ) . $event_venue; ?><br>
-  				<?php if ( $event_rsvp == 'Yes' ) { ?>
-                    <?php _e( 'This event is open for RSVP, please click the following to register:', 'max-event' ); ?><br>
-                    <a href="$event_rsvp_link" title="<?php the_title(); ?>"><?php _e( 'Please click this link to ', 'max-event' ); ?></a><br>
-  				<?php } ?>
               </p>
+  			  <p>
+                <?php echo __( 'Event Detail: ', 'max-event' ) . $event_venue; ?><br>
+                <?php the_content(); ?>
+              </p>
+  				<?php if ( $event_rsvp == 'Yes' ) { ?>
+                    <p>
+                        <?php _e( 'This event is open for RSVP, please click the following to register:', 'max-event' ); ?><br>
+                        <a href="$event_rsvp_link" title="<?php the_title(); ?>"><?php _e( 'Please click this link to ', 'max-event' ); ?></a><br>
+                    </p>
+  				<?php } ?>
   			</div>
   		  </div>
 		</div>
