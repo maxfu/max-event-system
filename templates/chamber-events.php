@@ -13,9 +13,9 @@ $args = array(
 //            'terms' => 'chamber',
 //        ),
 //    ),
-    'meta_key' => 'event_begin',
-    'orderby' => 'meta_value_num',
-    'order' => 'DESC',
+//    'meta_key' => 'event_begin',
+//    'orderby' => 'meta_value_num',
+//    'order' => 'DESC',
 );
 
 $custom_loop = new WP_Query( $args);
