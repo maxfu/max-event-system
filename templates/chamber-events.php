@@ -12,7 +12,7 @@ $args = array(
 //            'field' => 'slug',
 //            'terms' => 'chamber',
 //        ),
-    ),
+//    ),
     'meta_key' => 'event_begin',
     'orderby' => 'meta_value_num',
     'order' => 'DESC',
