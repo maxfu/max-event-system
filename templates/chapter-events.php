@@ -19,8 +19,7 @@ $args = array(
             'include_children' => true,
         ),
     ),
-    'meta_key' => 'event_begin',
-    'orderby' => 'meta_value_num',
+    'orderby' => 'date',
     'order' => 'DESC',
 );
 
