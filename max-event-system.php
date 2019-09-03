@@ -256,11 +256,11 @@ function mes_render_event_info_metabox( $post ) {
 	?>
 	<p>
 		<label for="mes-event-start-date"><?php _e( 'Event Start Date:', 'max-event' ); ?></label>
-		<input type="text" id="mes-event-start-date" name="mes-event-start-date" class="widefat mes-event-date-input" value="<?php echo date( 'd/m/Y g:i A', $event_start_date ); ?>" placeholder="<?php echo date( 'd/m/Y g:i A' ); ?>">
+		<input type="text" id="mes-event-start-date" name="mes-event-start-date" class="widefat mes-event-date-input" value="<?php echo date( 'd/m/Y', $event_start_date ); ?>" placeholder="<?php echo date( 'd/m/Y' ); ?>">
 	</p>
 	<p>
 		<label for="mes-event-end-date"><?php _e( 'Event End Date:', 'max-event' ); ?></label>
-		<input type="text" id="mes-event-end-date" name="mes-event-end-date" class="widefat mes-event-date-input" value="<?php echo date( 'd/m/Y g:i A', $event_end_date ); ?>" placeholder="<?php echo date( 'd/m/Y g:i A' ); ?>">
+		<input type="text" id="mes-event-end-date" name="mes-event-end-date" class="widefat mes-event-date-input" value="<?php echo date( 'd/m/Y', $event_end_date ); ?>" placeholder="<?php echo date( 'd/m/Y' ); ?>">
 	</p>
 	<p>
 		<label for="mes-event-venue"><?php _e( 'Event Venue:', 'max-event' ); ?></label>
@@ -344,7 +344,7 @@ function mes_save_event_info( $post_id ) {
 	if ( isset( $_POST['mes-event-venue'] ) ) {
 		update_post_meta( $post_id, 'event-venue', sanitize_text_field( $_POST['mes-event-venue'] ) );
 	}
-    
+
     if ( isset( $_POST['mes-event-rsvp'] ) ) {
         update_post_meta( $post_id, 'event-rsvp', esc_attr( $_POST['mes-event-rsvp'] ) );
     }

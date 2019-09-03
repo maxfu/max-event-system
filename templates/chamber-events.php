@@ -4,13 +4,14 @@ $args = array(
     'post_type'         => array( 'event_moment' ),
     'nopaging'          => false,
     'posts_per_page'    => '20',
-    'tax_query'         => array(
-        array(
-            'taxonomy'  => 'branch',
-            'include_children' => true,
-            'field' => 'slug',
-            'terms' => 'chamber',
-        ),
+    'branch'            => 'chamber',
+//    'tax_query'         => array(
+//        array(
+//            'taxonomy'  => 'branch',
+//            'include_children' => true,
+//            'field' => 'slug',
+//            'terms' => 'chamber',
+//        ),
     ),
     'meta_key' => 'event_begin',
     'orderby' => 'meta_value_num',
