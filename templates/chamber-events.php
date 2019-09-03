@@ -14,8 +14,8 @@ $args = array(
 //        ),
 //    ),
 //    'meta_key' => 'event_begin',
-//    'orderby' => 'meta_value_num',
-//    'order' => 'DESC',
+    'orderby' => 'date',
+    'order' => 'DESC',
 );
 
 $custom_loop = new WP_Query( $args);
