@@ -1,20 +1,12 @@
 <?php
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $args = array(
-    'post_type'         => array( 'event_moment' ),
-    'nopaging'          => false,
-    'posts_per_page'    => '20',
-    'tax_query'         => array(
-        array(
-            'taxonomy'  => 'branch',
-            'include_children' => true,
-            'field' => 'slug',
-            'terms' => 'member',
-        ),
-    ),
-    'meta_key' => 'event_begin',
-    'orderby' => 'meta_value_num',
-    'order' => 'DESC',
+    'post_type'      => array( 'event_moment' ),
+    'nopaging'       => false,
+    'posts_per_page' => '20',
+    'branch'         => 'member',
+    'orderby'        => 'date',
+    'order'          => 'DESC',
 );
 
 $custom_loop = new WP_Query( $args);
